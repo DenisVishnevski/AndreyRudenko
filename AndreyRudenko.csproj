@@ -41,10 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\components\AboutMe.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Footer.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Header.tsx" />

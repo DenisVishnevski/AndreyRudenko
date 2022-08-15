@@ -98,5 +98,5 @@ const mapDispatchToProps = (dispatch: any) => {
         changePhoneNumber: bindActionCreators(changePhoneNumber, dispatch)
     }
 }
-let Wrapper = connect<Props>(mapStateToProps, mapDispatchToProps)(Footer);
-export default Wrapper;
+let FooterWrapper = connect<Props>(mapStateToProps, mapDispatchToProps)(Footer);
+export default FooterWrapper;

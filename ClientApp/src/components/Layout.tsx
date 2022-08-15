@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Header } from './Header';
-import Wrapper from './Footer';
+import Footer from './Footer';
 
 export class Layout extends React.Component<{ children: ReactNode }> {
     render() {
@@ -11,7 +11,7 @@ export class Layout extends React.Component<{ children: ReactNode }> {
                 <div>
                     {this.props.children}
                 </div>
-                <Wrapper />
+                <Footer />
             </div>
         );
     }

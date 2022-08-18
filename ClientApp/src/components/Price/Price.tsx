@@ -88,16 +88,25 @@ export class Price extends Component<{}, State> {
                 <h1 id="4">Price</h1>
                 <ul className="price__button_list">
                     <li className="price__title_button">
-                        <input type="radio"
+                        <input
+                            type="radio"
                             id="prb1"
                             name="price__button"
                             value="photo"
                             onChange={this.switchTab}
-                            defaultChecked></input>
-                        <label htmlFor="prb1" className="portfolio__title">photo</label>
+                            defaultChecked>
+                        </input>
+                        <label
+                            htmlFor="prb1" className="portfolio__title">photo</label>
                     </li>
                     <li className="price__title_button">
-                        <input type="radio" onChange={this.switchTab} id="prb2" name="price__button" value="video"></input>
+                        <input
+                            type="radio"
+                            onChange={this.switchTab}
+                            id="prb2"
+                            name="price__button"
+                            value="video">
+                        </input>
                         <label htmlFor="prb2" className="portfolio__title">video</label>
                     </li>
                 </ul>

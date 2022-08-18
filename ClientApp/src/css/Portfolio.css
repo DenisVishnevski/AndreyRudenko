@@ -44,25 +44,19 @@
     display: flex;
 }
 
-.gallery__family_shooting,
-.gallery__events {
-    display: none;
-}
-
 .gallery__image {
+    width: 460px;
+    object-fit: cover;
     margin-right: 20px;
     margin-bottom: 20px;
     max-height: 600px;
+    min-height: 300px;
 }
 
     .gallery__image:last-child {
         margin-right: 0;
     }
 
-.gallery__row img {
-    width: 460px;
-    object-fit: cover;
-}
 .view_more__button {
     background-color: #ffffff;
     border: none;

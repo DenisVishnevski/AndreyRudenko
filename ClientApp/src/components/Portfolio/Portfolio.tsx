@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import '../../css/Portfolio.css';
+import { RadioButton } from '../UI/RadioButton';
 
 interface State {
     gallery: any,
@@ -15,6 +16,12 @@ let rowsLimit: number = 2;
 let galleryRow: object[] = [];
 let actualImageArray: any = [];
 let isViewMore: boolean = false;
+
+const galleryButtons: object[] = [
+    { id: "gb1", value: "portraits", isChecked: true},
+    { id: "gb2", value: "family", isChecked: false },
+    { id: "gb3", value: "events", isChecked: false }
+];
 export class Portfolio extends Component<{}, State> {
     constructor(props: any) {
         super(props);
@@ -37,7 +44,7 @@ export class Portfolio extends Component<{}, State> {
             row: []
         };
         for (; imageCount < imageMaxCount; imageCount++) {
-            if (array[imageCount] != undefined) {
+            if (array[imageCount] !== undefined) {
                 rowObject.row.push(array[imageCount]);
             }
         }
@@ -79,7 +86,7 @@ export class Portfolio extends Component<{}, State> {
                 }));
                 this.galleryFilling(imageArray.portraits);
                 break;
-            case 'family_shooting':
+            case 'family':
                 this.setState((state) => ({
                     imagePath: 'galleries/family/'
                 }));
@@ -102,22 +109,12 @@ export class Portfolio extends Component<{}, State> {
         return (
             <div className="component">
                 <h1 id="2">Portfolio</h1>
-                <ul className="portfolio__list">
-                    <li className="portfolio__item">
-                        <input type="radio" id="pb1" name="portfolio__button" value="portraits" onChange={this.switchTab} defaultChecked></input>
-                        <label htmlFor="pb1" className="portfolio__title">portraits</label>
-                    </li>
-                    <li className="portfolio__item">
-                        <input type="radio" id="pb2" name="portfolio__button" value="family_shooting" onChange={this.switchTab}></input>
-                        <label htmlFor="pb2" className="portfolio__title">family shooting</label>
-                    </li>
-                    <li className="portfolio__item">
-                        <input type="radio" id="pb3" name="portfolio__button" value="events" onChange={this.switchTab}></input>
-                        <label htmlFor="pb3" className="portfolio__title">events</label>
-                    </li>
-                </ul>
+                <div className="radio_buttons__list">
+                    {galleryButtons.map((button: any) =>
+                        <RadioButton id={button.id} name="portfolio__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                    )}
+                </div>
                 <div className="black__line"></div>
-
                 <div className="gallery">
                     <div className="gallery__portraits">
                         {gallery.map((row: any) =>
@@ -127,17 +124,10 @@ export class Portfolio extends Component<{}, State> {
                                 )}
                             </div>
                         )}
-                        
                     </div>
-
-                    <div className="gallery__family_shooting"></div>
-
-                    <div className="gallery__events"></div>
-
                 </div>
                 <button className="view_more__button" onClick={this.viewMore} style={{ display: this.state.viewMoreButton }}>View more</button>
             </div>
-
         );
     }
     async addImageArray() {

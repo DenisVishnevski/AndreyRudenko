@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../css/Price.css';
 import arrow from '../../assets/images/arrow.png';
 import { PriceContainer } from './PriceContainer';
-
+import { RadioButton } from '../UI/RadioButton';
 
 interface State {
     offset: number,
@@ -25,6 +25,11 @@ const videoSlides: object[] = [
     { id: 3, title: "video", price: 380 },
     { id: 4, title: "video", price: 1500 },
     { id: 5, title: "video", price: 800 }
+];
+
+const titleButtons: object[] = [
+    { id: "pb1", value: "photo", isChecked: true },
+    { id: "pb2", value: "video", isChecked: false }
 ];
 export class Price extends Component<{}, State> {
     constructor(props: any) {
@@ -86,30 +91,11 @@ export class Price extends Component<{}, State> {
         return (
             <div className="component">
                 <h1 id="4">Price</h1>
-                <ul className="price__button_list">
-                    <li className="price__title_button">
-                        <input
-                            type="radio"
-                            id="prb1"
-                            name="price__button"
-                            value="photo"
-                            onChange={this.switchTab}
-                            defaultChecked>
-                        </input>
-                        <label
-                            htmlFor="prb1" className="portfolio__title">photo</label>
-                    </li>
-                    <li className="price__title_button">
-                        <input
-                            type="radio"
-                            onChange={this.switchTab}
-                            id="prb2"
-                            name="price__button"
-                            value="video">
-                        </input>
-                        <label htmlFor="prb2" className="portfolio__title">video</label>
-                    </li>
-                </ul>
+                <div className="radio_buttons__list">
+                    {titleButtons.map((button: any) =>
+                        <RadioButton id={button.id} name="price__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                    )}
+                </div>
                 <div className="black__line"></div>
 
                 <button onClick={this.slideRight} className="slider__button_right">
@@ -118,17 +104,12 @@ export class Price extends Component<{}, State> {
                 <button onClick={this.slideLeft} className="slider__button_left">
                     <img src= { arrow } alt="arrow.png"></img>
                 </button>
-
-
                 <PriceContainer
                     sliderOffset={this.state.offset}
                     slides={this.state.slides}
                     containerWidth={this.state.containerWidth}
                     sliderLocalOffset={this.state.sliderLocalOffset} />
-
-
             </div>
-
         );
     }
 }

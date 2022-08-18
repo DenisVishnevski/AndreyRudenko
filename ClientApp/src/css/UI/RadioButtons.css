@@ -1,0 +1,38 @@
+﻿.radio_buttons__list {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 0;
+    margin-bottom: 20px;
+}
+
+.radio_button {
+    margin-right: 20px;
+    line-height: 0;
+}
+
+    .radio_button input[type="radio"] {
+        display: none;
+    }
+
+    .radio_button :checked + .radio_button__title {
+        font-weight: 600;
+    }
+
+    .radio_button label {
+        font-size: 20px;
+        line-height: 24px;
+        cursor: pointer;
+    }
+
+        .radio_button label::after {
+            content: "|";
+            color: #000000;
+            padding-left: 20px;
+            font-weight: 400;
+        }
+
+    .radio_button:last-child label::after {
+        content: "";
+
+    }

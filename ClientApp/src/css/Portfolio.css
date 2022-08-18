@@ -1,40 +1,4 @@
-﻿.portfolio__list {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin-bottom: 0;
-    margin-bottom: 20px;
-}
-
-.portfolio__item label {
-    font-size: 20px;
-    line-height: 24px;
-    cursor: pointer;
-}
-
-    .portfolio__item label::after {
-        content: "|";
-        color: #000000;
-        padding-left: 20px;
-        font-weight: 400;
-    }
-
-.portfolio__item {
-    margin-right: 20px;
-    list-style-type: none;
-    line-height: 0;
-}
-
-    .portfolio__item input[type="radio"] {
-        display: none;
-    }
-
-    .portfolio__item :checked + .portfolio__title {
-        font-weight: 600;
-    }
-
-
-
+﻿
 .gallery {
     display: flex;
     padding-top: 20px;

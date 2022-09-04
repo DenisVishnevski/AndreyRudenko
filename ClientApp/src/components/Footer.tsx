@@ -5,7 +5,7 @@ import picture from '../assets/images/image 14.png';
 import { changeName, changePhoneNumber } from '../store/actions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import store from '../store/store';
+import { Selector } from './UI/Selector';
 
 interface Props {
     name: string,
@@ -13,18 +13,35 @@ interface Props {
     changeName?: any,
     changePhoneNumber?: any
 }
-
-export class Footer extends Component<Props> {
-  
+const baseOptionsMenu: object[] = [
+    { id: "bo1", value: "photo", isChecked: false },
+    { id: "bo2", value: "video", isChecked: false }
+];
+const otherOptionsMenu: object[] = [
+    { id: "oo1", value: "portraits", isChecked: false },
+    { id: "oo2", value: "family", isChecked: false },
+    { id: "oo3", value: "events", isChecked: false }
+];
+class Footer extends Component<Props, { baseOptionsSelected: boolean }> {
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            baseOptionsSelected: false
+        }
+        this.addOtherOptionSelector = this.addOtherOptionSelector.bind(this);
+    }
+    addOtherOptionSelector() {
+        this.setState((state) => ({
+            baseOptionsSelected: true
+        }))
+    }
     render() {
         const { name, phoneNumber, changeName, changePhoneNumber } = this.props;
         return (
             <footer>
                 <div className="wrapper">
                     <div className="footer__content">
-                        <div className="footer__picture">
-                            <img src={picture} alt=""></img>
-                        </div>
+                        <img className="footer__picture" src={picture} alt="" />
                         <div className="footer__registration">
                             <h1 id="5">Get in touch with me</h1>
                             <div className="footer__subtitle">
@@ -49,8 +66,13 @@ export class Footer extends Component<Props> {
                                     onChange={(event) => {
                                         changePhoneNumber(event.target.value);
                                     }}
-                                    required></input>
-                                <input type="text" placeholder="Select shooting" name="Select shooting" required></input>
+                                    required></input
+                                >
+                                <Selector selectorLabel="Select a service" options={baseOptionsMenu} isSelected={this.addOtherOptionSelector} zIndex={3} />
+                                {this.state.baseOptionsSelected
+                                    ? <Selector selectorLabel="Select a service" options={otherOptionsMenu} zIndex={2}  />
+                                    : null}
+                               
                             </form>
                             <button className="footer__button">
                                 Sign up

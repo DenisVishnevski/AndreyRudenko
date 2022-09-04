@@ -18,7 +18,7 @@ let actualImageArray: any = [];
 let isViewMore: boolean = false;
 
 const galleryButtons: object[] = [
-    { id: "gb1", value: "portraits", isChecked: true},
+    { id: "gb1", value: "portraits", isChecked: true },
     { id: "gb2", value: "family", isChecked: false },
     { id: "gb3", value: "events", isChecked: false }
 ];
@@ -111,7 +111,9 @@ export class Portfolio extends Component<{}, State> {
                 <h1 id="2">Portfolio</h1>
                 <div className="radio_buttons__list">
                     {galleryButtons.map((button: any) =>
-                        <RadioButton id={button.id} name="portfolio__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                        <div className="radio_button" >
+                            <RadioButton className="radio_button__title" id={button.id} name="portfolio__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                        </div>
                     )}
                 </div>
                 <div className="black__line"></div>

@@ -1,8 +1,7 @@
 ﻿footer {
-    width: 100vw;
-    height: 654px;
     background-color: #0D0D0D;
     margin-top: 80px;
+    overflow: hidden;
 }
 
     footer h1,
@@ -13,10 +12,12 @@
     }
 
 .footer__content {
-    padding-top: 60px;
+    padding-top: 80px;
     display: flex;
 }
-
+.footer__picture{
+    max-height: 430px;
+}
 .footer__registration {
     margin-left: 70px;
 }
@@ -30,14 +31,15 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 70px;
+    margin-bottom: 80px;
 }
 
 .footer__list {
     display: flex;
 }
 
-footer input {
+footer input{
     width: 100%;
     margin-top: 30px;
     padding-bottom: 10px;
@@ -50,6 +52,24 @@ footer input {
     font-size: 20px;
     line-height: 24px;
 }
+footer select {
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border: none;
+    background-color: #0D0D0D;
+    color: #ffffff;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    border-radius: 0;
+    outline: none;
+}
+    footer select::part(listbox) {
+        border-radius: 0;
+    }
 
     footer input:focus {
         outline: none;

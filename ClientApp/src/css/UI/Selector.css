@@ -1,0 +1,57 @@
+﻿.selector {
+    position: relative;
+}
+
+    .selector button {
+        width: 100%;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border: none;
+        background-color: #0D0D0D;
+        color: white;
+        font-family: 'Montserrat';
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transition: all ease .4s;
+}
+
+.optionsMenu {
+    width: 100%;
+    background-color: white;
+    transition: all ease .4s;
+    position: absolute;
+    overflow: hidden;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.selector__option {
+    width: 100%;
+    border-bottom: 1px solid white;
+    background-color: #0D0D0D;
+    color: white;
+    font-size: 20px;
+}
+    .selector__option label {
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+    }
+    .selector__option:hover {
+        background-color: white;
+        color: black;
+    }
+
+.selector__option input[type="radio"] {
+    display: none;
+}
+

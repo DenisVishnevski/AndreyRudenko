@@ -1,4 +1,4 @@
-﻿import { ACTION_CHANGE_NAME, ACTION_CHANGE_PHONE_NUMBER, ACTION_CHANGE_SLIDER_OFFSET } from './store';
+﻿import { ACTION_CHANGE_NAME, ACTION_CHANGE_PHONE_NUMBER, ACTION_CHANGE_IS_CLICK } from './store';
 
 export const changeName = (newName: string) => {
     
@@ -13,9 +13,9 @@ export const changePhoneNumber = (newNumber: string) => {
         payload: newNumber
     }
 }
-export const changeSliderOffset = (newValue: number) => {
+export const changeIsClick = (newValue: number) => {
     return {
-        type: ACTION_CHANGE_SLIDER_OFFSET,
+        type: ACTION_CHANGE_IS_CLICK,
         payload: newValue
     }
 }

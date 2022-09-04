@@ -1,9 +1,9 @@
-﻿import { ACTION_CHANGE_NAME, ACTION_CHANGE_PHONE_NUMBER, ACTION_CHANGE_SLIDER_OFFSET } from './store';
+﻿import { ACTION_CHANGE_NAME, ACTION_CHANGE_PHONE_NUMBER, ACTION_CHANGE_IS_CLICK } from './store';
 
 const initialState = {
     name: '',
     phoneNumber: '+7',
-    sliderOffset: 0
+    isClick: 0
 }
 
 export const reducer = (state = initialState, action: any) => {
@@ -12,8 +12,8 @@ export const reducer = (state = initialState, action: any) => {
             return { ...state, name: action.payload };
         case ACTION_CHANGE_PHONE_NUMBER:
             return { ...state, phoneNumber: action.payload };
-        case ACTION_CHANGE_SLIDER_OFFSET:
-            return { ...state, sliderOffset: action.payload }
+        case ACTION_CHANGE_IS_CLICK:
+            return { ...state, isClick: action.payload }
     }
     return state;
 }

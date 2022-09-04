@@ -59,7 +59,7 @@ export class Price extends Component<{}, State> {
     }
     slideLeft() {
         const newSlide = this.state.slides[this.state.slides.length - 1];
-        
+
         this.setState((state) => ({
             offset: state.offset - 480,
             slides: [newSlide, ...state.slides],
@@ -75,14 +75,14 @@ export class Price extends Component<{}, State> {
                 this.setState((state) => ({
                     slides: [...videoSlides, ...videoSlides, ...videoSlides],
                     containerWidth: (slideWidth * videoSlides.length) * 3,
-                    
+
                 }))
                 break;
             case 'photo':
                 this.setState((state) => ({
                     slides: [...photoSlides, ...photoSlides, ...photoSlides],
                     containerWidth: (slideWidth * photoSlides.length) * 3,
-                    
+
                 }))
                 break;
         }
@@ -93,16 +93,18 @@ export class Price extends Component<{}, State> {
                 <h1 id="4">Price</h1>
                 <div className="radio_buttons__list">
                     {titleButtons.map((button: any) =>
-                        <RadioButton id={button.id} name="price__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                        <div className="radio_button">
+                            <RadioButton className="radio_button__title" id={button.id} name="price__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                        </div>
                     )}
                 </div>
                 <div className="black__line"></div>
 
                 <button onClick={this.slideRight} className="slider__button_right">
-                    <img src= { arrow } alt="arrow.png"></img>
+                    <img src={arrow} alt="arrow.png"></img>
                 </button>
                 <button onClick={this.slideLeft} className="slider__button_left">
-                    <img src= { arrow } alt="arrow.png"></img>
+                    <img src={arrow} alt="arrow.png"></img>
                 </button>
                 <PriceContainer
                     sliderOffset={this.state.offset}

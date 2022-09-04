@@ -31,7 +31,6 @@
     font-weight: 400;
     src: local(''), url('../assets/fonts/montserrat-v24-latin/Montserrat-Regular.woff') format('woff');
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -54,6 +53,11 @@ h6 {
 
 p {
     margin: 0;
+}
+
+.wrapper {
+    max-width: 1420px;
+    margin: 0 auto;
 }
 
 .component {

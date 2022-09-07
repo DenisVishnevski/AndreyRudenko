@@ -48,12 +48,12 @@ export class Header extends Component {
                                 <h4 className="intro__subtitle">
                                     Photographer and videographer
                                 </h4>
-                                <button className="intro__button">
+                                <a className="intro__button" href="#5">
                                     Sign up for shooting
-                                </button>
-                                <button className="intro__button_mobile">
+                                </a>
+                                <a className="intro__button_mobile">
                                     Sign up
-                                </button>
+                                </a>
                                 <div className="intro__languages">
                                     <a href="#1" className="header__link">En </a>
                                     <a href="#1" className="header__link">Ru</a>

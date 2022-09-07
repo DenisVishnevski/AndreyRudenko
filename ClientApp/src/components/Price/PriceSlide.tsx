@@ -24,9 +24,9 @@ export class PriceSlide extends Component<Props> {
                 </div>
                 <div className="price__line"></div>
                 <div className="price__button_container">
-                    <button className="price__button">
+                    <a className="price__button" href="#5">
                         {this.props.price + 'Р'}
-                    </button>
+                    </a>
                 </div>
             </div>
         )

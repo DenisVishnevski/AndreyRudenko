@@ -50,7 +50,7 @@ export class Selector extends Component<Props, State> {
     openOptionsMenu() {
         if (this.state.optionMenuHeight == 0) {
             this.setState((state) => ({
-                optionMenuHeight: this.props.options.length * 54,
+                optionMenuHeight: this.props.options.length * 40,
                 arrowDirection: -1
             }))
         }

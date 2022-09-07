@@ -130,10 +130,12 @@
     border: 2px solid rgb(0, 0, 0);
     background-color: #000000;
     color: white;
+    text-decoration: none;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
+    text-align: center;
 }
-
     .price__button:hover {
         background-color: #ffffff;
         color: rgb(0, 0, 0);

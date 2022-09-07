@@ -44,7 +44,7 @@
     .selector__option label {
         width: 100%;
         height: 100%;
-        padding: 15px;
+        padding: 8px;
     }
     .selector__option:hover {
         background-color: white;

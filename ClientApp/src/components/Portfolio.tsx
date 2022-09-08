@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
-import '../../css/Portfolio.css';
-import { RadioButton } from '../UI/RadioButton';
+import '../css/Portfolio.css';
+import { RadioButton } from './UI/RadioButton';
 
 interface State {
     gallery: any,

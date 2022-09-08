@@ -1,0 +1,47 @@
+﻿.popup_background {
+    top: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.75);
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+}
+.footer_popup {
+    position:relative;
+    background-color: white;
+    max-height: 250px;
+    max-width: 740px;
+    margin: 0 auto;
+    margin-top: 30vh;
+}
+.footer_popup__content {
+    display: flex;
+}
+.footer_popup__icon_tick {
+    margin: 55px 0 55px 40px;
+    max-width: 140px;
+    height: auto;
+}
+.footer_popup__text{
+    padding: 60px 80px 60px 36px;
+}
+    .footer_popup__text h1 {
+        color: black;
+        font-size: 40px;
+        outline-width: 0;
+    }
+    .footer_popup__text p{
+        margin-top: 20px;
+        font-family: Poiret One;
+        font-size: 24px;
+    }
+.popup__close_button{
+    position: absolute;
+    padding: 0;
+    border: 0;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    right: 20px;
+    top: 20px;
+}

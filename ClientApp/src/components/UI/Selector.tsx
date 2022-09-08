@@ -7,6 +7,9 @@ import { RadioButton } from './RadioButton';
 interface Props {
     selectorLabel: string,
     options: object[],
+    selectOption: any,
+    isDefault: boolean,
+    canselDefault?: any,
     isSelected?: any
     zIndex: number
 };
@@ -30,6 +33,15 @@ export class Selector extends Component<Props, State> {
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
             this.closeOptionsMenu();
+            if (this.props.isDefault) {
+                this.setState((state) => ({
+                    label: this.props.selectorLabel
+                }))
+                if (this.props.canselDefault) {
+                    this.props.canselDefault();
+                }
+               
+            }
         });
     }
     componentWillUnmount() {
@@ -56,11 +68,12 @@ export class Selector extends Component<Props, State> {
         }
     }
     selectOption(event: any) {
-        console.log(this.state.optionMenuHeight);
         let value = event.target.value;
+        let capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
         this.setState((state) => ({
-            label: value.charAt(0).toUpperCase() + value.slice(1)
+            label: capitalizedValue
         }));
+        this.props.selectOption(capitalizedValue);
         if (this.props.isSelected != undefined) {
             this.props.isSelected();
         }

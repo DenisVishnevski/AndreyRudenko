@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router'
 import Layout  from './components/Layout';
 import { AboutMe } from './components/AboutMe';
-import { Portfolio } from './components/Portfolio/Portfolio';
+import { Portfolio } from './components/Portfolio';
 import { StagesOfWork } from './components/StagesOfWork';
 import { Video } from './components/Video';
 import { Price } from './components/Price/Price';

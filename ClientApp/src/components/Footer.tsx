@@ -2,16 +2,17 @@ import * as React from 'react';
 import { Component } from 'react';
 import '../css/Footer.css';
 import picture from '../assets/images/image 14.png';
-import { changeName, changePhoneNumber } from '../store/actions'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Selector } from './UI/Selector';
+import { FooterPopup } from './Popups/FooterPopup';
 
-interface Props {
+interface State {
     name: string,
     phoneNumber: string,
-    changeName?: any,
-    changePhoneNumber?: any
+    baseOptionsSelected: boolean,
+    baseOption: string,
+    otherOption: string,
+    selectorsLabelisDefault: boolean,
+    popup: boolean
 }
 const baseOptionsMenu: object[] = [
     { id: "bo1", value: "photo", isChecked: false },
@@ -22,21 +23,79 @@ const otherOptionsMenu: object[] = [
     { id: "oo2", value: "family", isChecked: false },
     { id: "oo3", value: "events", isChecked: false }
 ];
-class Footer extends Component<Props, { baseOptionsSelected: boolean }> {
+export class Footer extends Component<{}, State> {
     constructor(props: any) {
         super(props)
         this.state = {
-            baseOptionsSelected: false
+            name: "",
+            phoneNumber: "",
+            baseOptionsSelected: false,
+            baseOption: "Сам",
+            otherOption: "Спросишь",
+            selectorsLabelisDefault: false,
+            popup: false,
         }
         this.addOtherOptionSelector = this.addOtherOptionSelector.bind(this);
+        this.selectBaseOption = this.selectBaseOption.bind(this);
+        this.selectOtherOption = this.selectOtherOption.bind(this);
+        this.closePopup = this.closePopup.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.cancelSelectorsLabelDefault = this.cancelSelectorsLabelDefault.bind(this);
     }
     addOtherOptionSelector() {
         this.setState((state) => ({
             baseOptionsSelected: true
         }))
     }
+    selectBaseOption(value: string) {
+        this.setState((state) => ({
+            baseOption: value
+        }))
+    }
+    selectOtherOption(value: string) {
+        this.setState((state) => ({
+            otherOption: value
+        }))
+    }
+    async onSubmit(event: any) {
+        fetch('email', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: this.state.name,
+                contactDetails: this.state.phoneNumber,
+                baseOption: this.state.baseOption,
+                otheroption: this.state.otherOption
+            }),
+            headers: {
+                'Accept': 'application/json; charset=utf-8',
+                'Content-Type': 'application/json;charset=UTF-8'
+            }
+        });
+        this.setState((state) => ({
+            name: "",
+            phoneNumber: "",
+            selectorsLabelisDefault: true,
+            baseOptionsSelected: false
+        }))
+        event.preventDefault();
+        this.openPopup();
+    }
+    cancelSelectorsLabelDefault() {
+        this.setState((state) => ({
+            selectorsLabelisDefault: false
+        }))
+    }
+    openPopup() {
+        this.setState((state) => ({
+            popup: true
+        }))
+    }
+    closePopup() {
+        this.setState((state) => ({
+            popup: false
+        }))
+    }
     render() {
-        const { name, phoneNumber, changeName, changePhoneNumber } = this.props;
         return (
             <footer>
                 <div className="wrapper">
@@ -47,36 +106,38 @@ class Footer extends Component<Props, { baseOptionsSelected: boolean }> {
                             <div className="footer__subtitle">
                                 <h2>Did you like my work? Leave a request and I will contact you</h2>
                             </div>
-                            <form action="#">
+                            <form onSubmit={this.onSubmit}>
 
                                 <input
                                     type="text"
-                                    value={name}
+                                    value={this.state.name}
                                     placeholder="Your name"
                                     name="name"
                                     onChange={(event) => {
-                                        changeName(event.target.value);
-                                    }}
-                                    required></input>
+                                        this.setState((state) => ({
+                                            name: event.target.value
+                                        }))
+                                    }}></input>
                                 <input
                                     type="tel"
-                                    value={phoneNumber}
-                                    placeholder="Number"
+                                    value={this.state.phoneNumber}
+                                    placeholder="Contact Details"
                                     name="phone"
                                     onChange={(event) => {
-                                        changePhoneNumber(event.target.value);
-                                    }}
-                                    required></input
+                                        this.setState((state) => ({
+                                            phoneNumber: event.target.value
+                                        }))
+                                    }}></input
                                 >
-                                <Selector selectorLabel="Select a service" options={baseOptionsMenu} isSelected={this.addOtherOptionSelector} zIndex={3} />
+                                <Selector canselDefault={this.cancelSelectorsLabelDefault } isDefault={this.state.selectorsLabelisDefault} selectorLabel="Select a service" options={baseOptionsMenu} isSelected={this.addOtherOptionSelector} selectOption={this.selectBaseOption} zIndex={3} />
                                 {this.state.baseOptionsSelected
-                                    ? <Selector selectorLabel="Select a service" options={otherOptionsMenu} zIndex={2}  />
+                                    ? <Selector isDefault={this.state.selectorsLabelisDefault} selectorLabel="Select a service" options={otherOptionsMenu} selectOption={this.selectOtherOption} zIndex={2}  />
                                     : null}
-                               
+                                <button className="footer__button">
+                                    Send
+                                </button>
                             </form>
-                            <button className="footer__button">
-                                Sign up
-                            </button>
+                           
                         </div>
                     </div>
                     <div className="footer__contacts_container">
@@ -99,26 +160,13 @@ class Footer extends Component<Props, { baseOptionsSelected: boolean }> {
                         </div>
                     </div>
                 </div>
-
+                {this.state.popup
+                    ? <FooterPopup closePopup={this.closePopup} />
+                    : null
+                }
+               
             </footer>
-
-
         );
     }
 
 }
-
-const mapStateToProps = (state: any) => {
-    return {
-        name: state.name,
-        phoneNumber: state.phoneNumber
-    }
-}
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        changeName: bindActionCreators(changeName, dispatch),
-        changePhoneNumber: bindActionCreators(changePhoneNumber, dispatch)
-    }
-}
-let FooterWrapper = connect<Props>(mapStateToProps, mapDispatchToProps)(Footer);
-export default FooterWrapper;

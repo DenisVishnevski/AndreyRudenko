@@ -29,6 +29,7 @@
     <None Remove="ClientApp\src\components\Footer.tsx" />
     <None Remove="ClientApp\src\components\Header.tsx" />
     <None Remove="ClientApp\src\components\Layout.tsx" />
+    <None Remove="ClientApp\src\components\Popups\FooterPopup.tsx" />
     <None Remove="ClientApp\src\components\Price.tsx" />
     <None Remove="ClientApp\src\components\Price\PriceContainer.tsx" />
     <None Remove="ClientApp\src\components\Price\PriceSlide.tsx" />
@@ -46,6 +47,7 @@
     <TypeScriptCompile Include="ClientApp\src\components\Footer.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Header.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Layout.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\Popups\FooterPopup.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Price\Price.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Price\PriceContainer.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Price\PriceSlide.tsx" />

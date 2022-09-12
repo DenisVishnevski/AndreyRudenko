@@ -4,86 +4,128 @@ import '../css/Footer.css';
 import picture from '../assets/images/image 14.png';
 import { Selector } from './UI/Selector';
 import { FooterPopup } from './Popups/FooterPopup';
+import { baseOptions, photoOptions, videoOptions } from '../data/shootingOptions';
+import { bindActionCreators } from 'redux';
+import { changeShootingOptions } from '../store/actions';
+import { connect } from 'react-redux';
 
 interface State {
     name: string,
     phoneNumber: string,
     baseOptionsSelected: boolean,
     baseOption: string,
+    otherOptions: object[],
     otherOption: string,
-    selectorsLabelisDefault: boolean,
     popup: boolean
 }
-const baseOptionsMenu: object[] = [
-    { id: "bo1", value: "photo", isChecked: false },
-    { id: "bo2", value: "video", isChecked: false }
-];
-const otherOptionsMenu: object[] = [
-    { id: "oo1", value: "portraits", isChecked: false },
-    { id: "oo2", value: "family", isChecked: false },
-    { id: "oo3", value: "events", isChecked: false }
-];
-export class Footer extends Component<{}, State> {
+enum Selectors {
+    baseSelector,
+    otherSelector
+}
+class Footer extends Component<{ shootingOptions: any }, State> {
+    defaultSelectorLabel: string = "Select a service";
     constructor(props: any) {
         super(props)
         this.state = {
             name: "",
             phoneNumber: "",
             baseOptionsSelected: false,
-            baseOption: "Сам",
-            otherOption: "Спросишь",
-            selectorsLabelisDefault: false,
-            popup: false,
+            baseOption: this.defaultSelectorLabel,
+            otherOptions: [],
+            otherOption: this.defaultSelectorLabel,
+            popup: false
         }
-        this.addOtherOptionSelector = this.addOtherOptionSelector.bind(this);
         this.selectBaseOption = this.selectBaseOption.bind(this);
         this.selectOtherOption = this.selectOtherOption.bind(this);
         this.closePopup = this.closePopup.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.cancelSelectorsLabelDefault = this.cancelSelectorsLabelDefault.bind(this);
     }
-    addOtherOptionSelector() {
-        this.setState((state) => ({
-            baseOptionsSelected: true
-        }))
+    componentDidUpdate(prevProps: any) {
+        if (prevProps.shootingOptions != this.props.shootingOptions) {
+            this.selectBaseOption(this.props.shootingOptions.baseOption);
+            this.selectOtherOption(this.props.shootingOptions.otherOption);
+        }
     }
-    selectBaseOption(value: string) {
-        this.setState((state) => ({
-            baseOption: value
-        }))
-    }
-    selectOtherOption(value: string) {
-        this.setState((state) => ({
-            otherOption: value
-        }))
+    addOtherOptionSelector(baseOptionValue: string) {
+        switch (baseOptionValue) {
+            case "photo": {
+                this.setState((state) => ({
+                    otherOptions: photoOptions,
+                    baseOptionsSelected: true
+                }));
+            }
+                break;
+            case "video": {
+                this.setState((state) => ({
+                    otherOptions: videoOptions,
+                    baseOptionsSelected: true
+                }));
+            }
+                break;
+        }
+        this.selectorsLabelDefault(Selectors.otherSelector);
     }
     async onSubmit(event: any) {
-        fetch('email', {
-            method: 'POST',
-            body: JSON.stringify({
-                name: this.state.name,
-                contactDetails: this.state.phoneNumber,
-                baseOption: this.state.baseOption,
-                otheroption: this.state.otherOption
-            }),
-            headers: {
-                'Accept': 'application/json; charset=utf-8',
-                'Content-Type': 'application/json;charset=UTF-8'
-            }
-        });
-        this.setState((state) => ({
-            name: "",
-            phoneNumber: "",
-            selectorsLabelisDefault: true,
-            baseOptionsSelected: false
-        }))
+        const inputValidation: boolean =
+            this.state.baseOption != this.defaultSelectorLabel &&
+            this.state.otherOption != this.defaultSelectorLabel &&
+            this.state.name.length != 0 &&
+            this.state.phoneNumber.length != 0
+        if (inputValidation) {
+            fetch('email', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: this.state.name,
+                    contactDetails: this.state.phoneNumber,
+                    baseOption: this.state.baseOption,
+                    otheroption: this.state.otherOption
+                }),
+                headers: {
+                    'Accept': 'application/json; charset=utf-8',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            });
+            this.setState((state) => ({
+                name: "",
+                phoneNumber: "",
+                baseOptionsSelected: false
+            }))
+            this.selectorsLabelDefault();
+            this.openPopup();
+        }
         event.preventDefault();
-        this.openPopup();
     }
-    cancelSelectorsLabelDefault() {
+    selectorsLabelDefault(selector?: Selectors) {
+        if (selector == Selectors.baseSelector) {
+            this.setState((state) => ({
+                baseOption: this.defaultSelectorLabel
+            }))
+        }
+        else if (selector == Selectors.otherSelector) {
+            this.setState((state) => ({
+                otherOption: this.defaultSelectorLabel
+            }))
+        }
+        else {
+            this.setState((state) => ({
+                baseOption: this.defaultSelectorLabel,
+                otherOption: this.defaultSelectorLabel
+            }))
+        }
+    }
+    selectBaseOption(value: any) {
+        let capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
         this.setState((state) => ({
-            selectorsLabelisDefault: false
-        }))
+            baseOption: capitalizedValue,
+            baseOptionsSelected: true
+        }));
+        this.addOtherOptionSelector(value);
+    }
+    selectOtherOption(value: any) {
+        let capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        this.setState((state) => ({
+            otherOption: capitalizedValue
+        }));
     }
     openPopup() {
         this.setState((state) => ({
@@ -129,15 +171,23 @@ export class Footer extends Component<{}, State> {
                                         }))
                                     }}></input
                                 >
-                                <Selector canselDefault={this.cancelSelectorsLabelDefault } isDefault={this.state.selectorsLabelisDefault} selectorLabel="Select a service" options={baseOptionsMenu} isSelected={this.addOtherOptionSelector} selectOption={this.selectBaseOption} zIndex={3} />
+                                <Selector
+                                    label={this.state.baseOption}
+                                    options={baseOptions}
+                                    selectOption={this.selectBaseOption}
+                                    zIndex={3} />
                                 {this.state.baseOptionsSelected
-                                    ? <Selector isDefault={this.state.selectorsLabelisDefault} selectorLabel="Select a service" options={otherOptionsMenu} selectOption={this.selectOtherOption} zIndex={2}  />
+                                    ? <Selector
+                                        label={this.state.otherOption}
+                                        options={this.state.otherOptions}
+                                        selectOption={this.selectOtherOption}
+                                        zIndex={2} />
                                     : null}
                                 <button className="footer__button">
                                     Send
                                 </button>
                             </form>
-                           
+
                         </div>
                     </div>
                     <div className="footer__contacts_container">
@@ -164,9 +214,19 @@ export class Footer extends Component<{}, State> {
                     ? <FooterPopup closePopup={this.closePopup} />
                     : null
                 }
-               
             </footer>
         );
     }
-
 }
+const mapStateToProps = (state: any) => {
+    return {
+        shootingOptions: state.shootingOptions
+    }
+}
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        changeShootingOptions: bindActionCreators(changeShootingOptions, dispatch)
+    }
+}
+let FooterWrapper = connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default FooterWrapper;

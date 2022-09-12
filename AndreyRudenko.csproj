@@ -37,6 +37,7 @@
     <None Remove="ClientApp\src\components\UI\RadioButton.tsx" />
     <None Remove="ClientApp\src\components\Video.tsx" />
     <None Remove="ClientApp\src\css\Price.tsx" />
+    <None Remove="ClientApp\src\data\shootingOptions.ts" />
     <None Remove="ClientApp\src\store\actions.ts" />
     <None Remove="ClientApp\src\store\reducer.ts" />
     <None Remove="ClientApp\src\store\store.ts" />
@@ -55,6 +56,7 @@
     <TypeScriptCompile Include="ClientApp\src\components\UI\RadioButton.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UI\Selector.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Video.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\data\shootingOptions.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\actions.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\store.ts" />

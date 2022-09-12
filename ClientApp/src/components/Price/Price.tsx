@@ -4,41 +4,26 @@ import '../../css/Price.css';
 import arrow from '../../assets/images/arrow.png';
 import { PriceContainer } from './PriceContainer';
 import { RadioButton } from '../UI/RadioButton';
+import { baseOptions, photoOptions, videoOptions} from '../../data/shootingOptions';
 
 interface State {
     offset: number,
     slides: object[],
     containerWidth: number,
-    sliderLocalOffset: number
+    sliderLocalOffset: number,
+    baseOption: string
 }
 const slideWidth = 480;
-const photoSlides: object[] = [
-    { id: 1, title: "portraits", price: 450 },
-    { id: 2, title: "family shooting", price: 2300 },
-    { id: 3, title: "events", price: 380 },
-    { id: 4, title: "photo", price: 1500 },
-    { id: 5, title: "sas", price: 800 }
-];
-const videoSlides: object[] = [
-    { id: 1, title: "video", price: 450 },
-    { id: 2, title: "family video", price: 2300 },
-    { id: 3, title: "video", price: 380 },
-    { id: 4, title: "video", price: 1500 },
-    { id: 5, title: "video", price: 800 }
-];
 
-const titleButtons: object[] = [
-    { id: "pb1", value: "photo", isChecked: true },
-    { id: "pb2", value: "video", isChecked: false }
-];
 export class Price extends Component<{}, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            offset: slideWidth * photoSlides.length,
-            slides: [...photoSlides, ...photoSlides, ...photoSlides],
-            containerWidth: (slideWidth * photoSlides.length) * 3,
-            sliderLocalOffset: 0
+            offset: slideWidth * photoOptions.length,
+            slides: [...photoOptions, ...photoOptions, ...photoOptions],
+            containerWidth: (slideWidth * photoOptions.length) * 3,
+            sliderLocalOffset: 0,
+            baseOption: "photo"
 
         }
         this.slideRight = this.slideRight.bind(this);
@@ -73,28 +58,37 @@ export class Price extends Component<{}, State> {
         switch (value) {
             case 'video':
                 this.setState((state) => ({
-                    slides: [...videoSlides, ...videoSlides, ...videoSlides],
-                    containerWidth: (slideWidth * videoSlides.length) * 3,
+                    slides: [...videoOptions, ...videoOptions, ...videoOptions],
+                    containerWidth: (slideWidth * videoOptions.length) * 3,
 
                 }))
                 break;
             case 'photo':
                 this.setState((state) => ({
-                    slides: [...photoSlides, ...photoSlides, ...photoSlides],
-                    containerWidth: (slideWidth * photoSlides.length) * 3,
+                    slides: [...photoOptions, ...photoOptions, ...photoOptions],
+                    containerWidth: (slideWidth * photoOptions.length) * 3,
 
                 }))
                 break;
         }
+        this.setState((state) => ({
+            baseOption: value
+        }))
     }
     render() {
         return (
             <div className="component">
                 <h1 id="4">Price</h1>
                 <div className="radio_buttons__list">
-                    {titleButtons.map((button: any) =>
+                    {baseOptions.map((button: any) =>
                         <div className="radio_button">
-                            <RadioButton className="radio_button__title" id={button.id} name="price__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
+                            <RadioButton
+                                className="radio_button__title"
+                                id={button.id} name="price__button"
+                                value={button.value} onChange={this.switchTab}
+                                isChecked={button.isChecked}>
+                                {button.value}
+                            </RadioButton>
                         </div>
                     )}
                 </div>
@@ -107,6 +101,7 @@ export class Price extends Component<{}, State> {
                     <img src={arrow} alt="arrow.png"></img>
                 </button>
                 <PriceContainer
+                    baseOption={this.state.baseOption}
                     sliderOffset={this.state.offset}
                     slides={this.state.slides}
                     containerWidth={this.state.containerWidth}

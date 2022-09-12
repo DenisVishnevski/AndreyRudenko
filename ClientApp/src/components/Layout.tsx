@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Header } from './Header';
-import { Footer } from './Footer';
+import Footer from './Footer';
 import { bindActionCreators } from 'redux';
 import { changeIsClick } from '../store/actions';
 import { connect } from 'react-redux';
-import store from '../store/store';
 
 interface Props {
     children: ReactNode

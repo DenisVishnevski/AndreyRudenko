@@ -38,20 +38,6 @@
 .footer__list {
     display: flex;
 }
-
-footer input{
-    width: 100%;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    border: none;
-    background-color: #0D0D0D;
-    color: #ffffff;
-    border-bottom: 1px solid rgb(255, 255, 255);
-    font-family: 'Montserrat';
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-}
 footer select {
     width: 100%;
     margin-top: 30px;
@@ -69,10 +55,6 @@ footer select {
 }
     footer select::part(listbox) {
         border-radius: 0;
-    }
-
-    footer input:focus {
-        outline: none;
     }
 
 .footer__button {

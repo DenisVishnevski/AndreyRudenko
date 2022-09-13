@@ -1,0 +1,22 @@
+﻿.input {
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    .input input {
+        width: 90%;
+        border: none;
+        background-color: #0D0D0D;
+        color: #ffffff;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .input input:focus {
+        outline: none;
+    }

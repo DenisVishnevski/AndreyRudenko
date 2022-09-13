@@ -8,10 +8,13 @@ import { baseOptions, photoOptions, videoOptions } from '../data/shootingOptions
 import { bindActionCreators } from 'redux';
 import { changeShootingOptions } from '../store/actions';
 import { connect } from 'react-redux';
+import { Input } from './UI/Input';
 
 interface State {
     name: string,
     phoneNumber: string,
+    isNameInputColor: string,
+    isContactInputColor: string,
     baseOptionsSelected: boolean,
     baseOption: string,
     otherOptions: object[],
@@ -24,11 +27,15 @@ enum Selectors {
 }
 class Footer extends Component<{ shootingOptions: any }, State> {
     defaultSelectorLabel: string = "Select a service";
+    defaultInputColor: string = "white";
+    errorInputColor: string = "#FF3E3E"
     constructor(props: any) {
         super(props)
         this.state = {
             name: "",
             phoneNumber: "",
+            isNameInputColor: this.defaultInputColor,
+            isContactInputColor: this.defaultInputColor,
             baseOptionsSelected: false,
             baseOption: this.defaultSelectorLabel,
             otherOptions: [],
@@ -66,12 +73,10 @@ class Footer extends Component<{ shootingOptions: any }, State> {
         this.selectorsLabelDefault(Selectors.otherSelector);
     }
     async onSubmit(event: any) {
-        const inputValidation: boolean =
-            this.state.baseOption != this.defaultSelectorLabel &&
-            this.state.otherOption != this.defaultSelectorLabel &&
-            this.state.name.length != 0 &&
-            this.state.phoneNumber.length != 0
-        if (inputValidation) {
+        const inputNameValidation: boolean = this.state.name.length > 1
+        const inputContactValidation: boolean = this.state.phoneNumber.length > 4
+
+        if (inputNameValidation && inputContactValidation) {
             fetch('email', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -88,10 +93,30 @@ class Footer extends Component<{ shootingOptions: any }, State> {
             this.setState((state) => ({
                 name: "",
                 phoneNumber: "",
-                baseOptionsSelected: false
+                baseOptionsSelected: false,
+                isNameInputColor: this.defaultInputColor,
+                isContactInputColor: this.defaultInputColor
             }))
             this.selectorsLabelDefault();
             this.openPopup();
+        }
+        else if (inputNameValidation && inputContactValidation == false) {
+            this.setState((state) => ({
+                isContactInputColor: this.errorInputColor,
+                isNameInputColor: this.defaultInputColor
+            }))
+        }
+        else if (inputNameValidation == false && inputContactValidation) {
+            this.setState((state) => ({
+                isNameInputColor: this.errorInputColor,
+                isContactInputColor: this.defaultInputColor
+            }))
+        }
+        else {
+            this.setState((state) => ({
+                isNameInputColor: this.errorInputColor,
+                isContactInputColor: this.errorInputColor
+            }))
         }
         event.preventDefault();
     }
@@ -150,27 +175,31 @@ class Footer extends Component<{ shootingOptions: any }, State> {
                             </div>
                             <form onSubmit={this.onSubmit}>
 
-                                <input
+                                <Input
                                     type="text"
                                     value={this.state.name}
-                                    placeholder="Your name"
                                     name="name"
-                                    onChange={(event) => {
+                                    elementsColor={this.state.isNameInputColor}
+                                    onChange={(event: { target: { value: any; }; }) => {
                                         this.setState((state) => ({
                                             name: event.target.value
                                         }))
-                                    }}></input>
-                                <input
+                                    }}>
+                                    Your name
+                                </Input>
+                                <Input
                                     type="tel"
                                     value={this.state.phoneNumber}
-                                    placeholder="Contact Details"
                                     name="phone"
-                                    onChange={(event) => {
+                                    elementsColor={this.state.isContactInputColor}
+                                    onChange={(event: { target: { value: any; }; }) => {
                                         this.setState((state) => ({
                                             phoneNumber: event.target.value
                                         }))
-                                    }}></input
-                                >
+                                    }}>
+                                    Contact Details
+                                </Input>
+
                                 <Selector
                                     label={this.state.baseOption}
                                     options={baseOptions}

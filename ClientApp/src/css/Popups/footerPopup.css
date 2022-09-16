@@ -1,18 +1,9 @@
-﻿.popup_background {
-    top: 0;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.75);
-    width: 100vw;
-    height: 100vh;
-    z-index: 5;
-}
+﻿
 .footer_popup {
     position:relative;
     background-color: white;
     max-height: 250px;
     max-width: 740px;
-    margin: 0 auto;
-    margin-top: 30vh;
 }
 .footer_popup__content {
     display: flex;

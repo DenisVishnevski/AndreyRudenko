@@ -20,7 +20,9 @@
     .gallery__image:last-child {
         margin-right: 0;
     }
-
+.gallery__image_container{
+    position: relative;
+}
 .view_more__button {
     background-color: #ffffff;
     border: none;

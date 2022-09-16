@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { Component } from 'react';
 import '../css/Portfolio.css';
+import { GalleryPopup } from './Popups/GalleryPopup';
 import { RadioButton } from './UI/RadioButton';
 
 interface State {
     gallery: any,
     loading: boolean,
     imageArray: any,
+    popupImageArray: object[];
     imagePath: string,
-    viewMoreButton: string
+    viewMoreButton: string,
+    isPopup: boolean
 }
 
 let imageCount: number = 0;
@@ -27,14 +30,21 @@ export class Portfolio extends Component<{}, State> {
         super(props);
         this.state = {
             imageArray: [],
+            popupImageArray: [],
             imagePath: 'galleries/portraits/',
             gallery: [],
             loading: true,
-            viewMoreButton: 'block'
+            viewMoreButton: 'block',
+            isPopup: false
         };
         this.switchTab = this.switchTab.bind(this);
         this.viewMore = this.viewMore.bind(this);
+        this.openImage = this.openImage.bind(this);
+        this.closeImage = this.closeImage.bind(this);
     }
+
+    imageNameOnClick: string = "";
+
     componentDidMount() {
         this.addImageArray();
     }
@@ -82,19 +92,22 @@ export class Portfolio extends Component<{}, State> {
         switch (value) {
             case 'portraits':
                 this.setState((state) => ({
-                    imagePath: 'galleries/portraits/'
+                    imagePath: 'galleries/portraits/',
+                    popupImageArray: imageArray.portraits
                 }));
                 this.galleryFilling(imageArray.portraits);
                 break;
             case 'family':
                 this.setState((state) => ({
-                    imagePath: 'galleries/family/'
+                    imagePath: 'galleries/family/',
+                    popupImageArray: imageArray.family
                 }));
                 this.galleryFilling(imageArray.family);
                 break;
             case 'events':
                 this.setState((state) => ({
-                    imagePath: 'galleries/events/'
+                    imagePath: 'galleries/events/',
+                    popupImageArray: imageArray.events
                 }));
                 this.galleryFilling(imageArray.events);
                 break;
@@ -103,6 +116,17 @@ export class Portfolio extends Component<{}, State> {
     viewMore() {
         isViewMore = true;
         this.galleryFilling(actualImageArray);
+    }
+    openImage(image: any) {
+        this.setState((state) => ({
+            isPopup: true
+        }));
+        this.imageNameOnClick = image.target.id;
+    }
+    closeImage() {
+        this.setState((state) => ({
+            isPopup: false
+        }));
     }
     render() {
         const gallery = this.state.gallery;
@@ -122,13 +146,18 @@ export class Portfolio extends Component<{}, State> {
                         {gallery.map((row: any) =>
                             <div className='gallery__row'>
                                 {row.map((image: any) =>
-                                    <img className="gallery__image" src={this.state.imagePath + image.name} alt="Image" />
+                                    <img onClick={this.openImage} className="gallery__image" src={this.state.imagePath + image.name} alt="Image" id={image.name} />
                                 )}
                             </div>
                         )}
                     </div>
                 </div>
                 <button className="view_more__button" onClick={this.viewMore} style={{ display: this.state.viewMoreButton }}>View more</button>
+                {this.state.isPopup
+                    ? <GalleryPopup imageArray={this.state.popupImageArray} imagePath={this.state.imagePath} actualImageName={this.imageNameOnClick} closePopup={this.closeImage} />
+                    : null
+                }
+
             </div>
         );
     }
@@ -137,6 +166,7 @@ export class Portfolio extends Component<{}, State> {
         const imagesUrl = await response.json();
         this.setState({
             imageArray: imagesUrl,
+            popupImageArray: imagesUrl.portraits,
             loading: false
         });
         this.galleryFilling(this.state.imageArray.portraits)

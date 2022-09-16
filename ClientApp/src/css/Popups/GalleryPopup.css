@@ -1,0 +1,22 @@
+﻿
+.popup_image {
+    position: relative;
+    min-height: 65vh;
+    max-height: 85vh;
+    max-width: 70vw;
+}
+.popup_left_arrow {
+    transform: scale(-1, 1);
+    height: 7.5vh;
+    margin-left: 9.40vw;
+}
+.popup_right_arrow {
+    height: 7.5vh;
+    margin-right: 9.92vw;
+}
+.popup_x {
+    position: absolute;
+    height: 7.5vh;
+    right: 9vw;
+    top: 3vw
+}

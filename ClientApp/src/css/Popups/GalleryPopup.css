@@ -8,7 +8,7 @@
 .popup_left_arrow {
     transform: scale(-1, 1);
     height: 7.5vh;
-    margin-left: 9.40vw;
+    margin-left: 8.70vw;
 }
 .popup_right_arrow {
     height: 7.5vh;
@@ -17,6 +17,6 @@
 .popup_x {
     position: absolute;
     height: 7.5vh;
-    right: 9vw;
+    right: 9.92vw;
     top: 3vw
 }

@@ -23,10 +23,13 @@
 }
 
 .footer__subtitle {
-    width: 400px;
+    width: 432px;
     margin-top: 30px;
 }
-
+    .footer__subtitle h2 {
+        font-size: 24px;
+        line-height: 130%;
+    }
 .footer__contacts_container {
     display: flex;
     align-items: flex-start;
@@ -37,6 +40,9 @@
 
 .footer__list {
     display: flex;
+}
+.footer__list :last-child {
+    margin-right: 0;
 }
 footer select {
     width: 100%;

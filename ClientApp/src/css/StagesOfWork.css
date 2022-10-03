@@ -17,14 +17,18 @@
     padding: 20px;
 }
 .row {
-    display: flex;
-    flex-direction: row;
+    width: 1420px;
+    margin: 0;
+    flex-wrap: nowrap;
 }
-
+    .row .column:last-child {
+        padding-right: 0;
+        width: 340px;
+    }
 .column {
-    padding-right: 20px;
-    padding-left: 0;
+    padding: 0;
     margin-top: 20px;
-    width: 25%;
+    padding-right: 20px;
+    width: 360px;
 }
 

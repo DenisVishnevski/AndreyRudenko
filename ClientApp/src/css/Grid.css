@@ -1,0 +1,21 @@
+﻿.grid {
+    display: grid;
+    grid-template-columns: repeat(11, 120px) 100px;
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    left: 50%;
+    margin-left: -710px;
+    z-index: 5;
+}
+.grid__column {
+    height: 100%;
+    background-color: #B4B4B4;
+    opacity: .2;
+    margin-right: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+.grid .grid__column:last-child {
+    margin-right: 0;
+}

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
+import { Grid } from './Grid';
 import { Header } from './Header';
 import Footer from './Footer';
 import { bindActionCreators } from 'redux';
@@ -22,6 +23,7 @@ class Layout extends React.Component<Props> {
     render() {
         return (
             <div onClick={this.click}>
+                {/*<Grid />*/}
                 <Header />
                 <div>
                     {this.props.children}

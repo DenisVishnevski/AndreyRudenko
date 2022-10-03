@@ -81,17 +81,10 @@
     border: none;
     cursor: pointer;
 }
-
-.price__button_container {
+.price__column_cntainer {
     border-left: 1px solid rgb(0, 0, 0);
     border-right: 1px solid rgb(0, 0, 0);
 }
-
-.price__text {
-    border-left: 1px solid rgb(0, 0, 0);
-    border-right: 1px solid rgb(0, 0, 0);
-}
-
 .price__title {
     text-align: center;
     margin: 10px 0 20px 0;

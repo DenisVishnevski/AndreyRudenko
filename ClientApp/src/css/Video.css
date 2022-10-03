@@ -1,9 +1,5 @@
-﻿.video__player {
-    padding-top: 30px;
-}
-
-    .video__player video {
-        width: 1382px;
+﻿.video__player video {
+        width: 1420px;
         height: 720px;
         background-color: #000000;
     }

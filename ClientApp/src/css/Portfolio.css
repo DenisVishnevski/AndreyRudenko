@@ -1,27 +1,26 @@
 ﻿
 .gallery {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 480px);
     padding-top: 20px;
 }
-
-.gallery__row {
-    display: flex;
-}
-
 .gallery__image {
-    width: 460px;
+    width: 100%;
     object-fit: cover;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     max-height: 600px;
     min-height: 300px;
+    height: 100%;
 }
 
-    .gallery__image:last-child {
-        margin-right: 0;
-    }
+
 .gallery__image_container{
     position: relative;
+}
+.gallery__buttons{
+    display: flex;
+    justify-content: end;
 }
 .view_more__button {
     background-color: #ffffff;
@@ -30,6 +29,5 @@
     height: 24px;
     font-size: 20px;
     line-height: 24px;
-    float: right;
     padding: 0;
 }

@@ -63,8 +63,7 @@
     padding-right: 20px;
     padding-left: 0;
     margin-top: 20px;
-    width: min(25vw, 480px);
-    min-width: 340px;
+    width: clamp(340px, 25vw, 480px);
 }
 .slider__button_right {
     position: absolute;
@@ -98,8 +97,8 @@
     margin-right: 20px;
     border-bottom: 1px solid rgb(0, 0, 0);
 }
-.price__description{
-    height: 250px;
+.price__description {
+    height: 100%;
 }
 .price__text p {
     padding-left: 20px;
@@ -136,3 +135,17 @@
         background-color: #ffffff;
         color: rgb(0, 0, 0);
     }
+@media screen and (max-width: 1280px) {
+    .slider__button_right {
+       display: none;
+    }
+
+    .slider__button_left {
+       display: none;
+    }
+}
+@media screen and (max-width: 1090px) {
+    .price__column {
+        width: 32.5vw;
+    }
+}

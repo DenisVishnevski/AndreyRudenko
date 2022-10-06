@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import portrait from '../assets/images/IMAGE 2022-05-06 13_12_23 1 1.png';
+import menuBurger from '../assets/images/menuBurger.svg';
 import '../css/Header.css';
 
 export class Header extends Component {
@@ -10,6 +11,9 @@ export class Header extends Component {
                 <header>
                     <div className="wrapper">
                         <div className="header__wrapper">
+                            <div className="header__burger">
+                                <img src={menuBurger} alt="Burger" width="40" height="40"></img>
+                            </div>
                             <nav className="header__nav">
                                 <ul className="header__list">
                                     <li className="header__item">
@@ -34,9 +38,6 @@ export class Header extends Component {
                                     <li className="header__item">Krasnodar</li>
                                     <li className="header__item">+7 (989) 814-30-16</li>
                                 </ul>
-                            </div>
-                            <div className="header__burger">
-                                <img src="Burger.png" alt="Burger" width="40" height="40"></img>
                             </div>
                         </div>
 

@@ -18,7 +18,7 @@
 
 .footer__picture {
     object-fit: cover;
-    width: clamp(430px, 40vw, 770px);
+    width: clamp(354px, 40vw, 770px);
     max-height: 430px;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .footer__subtitle {
-    width: 432px;
+    width: min(432px, 100%);
     margin-top: 30px;
 }
 
@@ -94,4 +94,16 @@ input:-webkit-autofill:active {
 
 input:-webkit-autofill {
     -webkit-text-fill-color: white;
+}
+@media screen and (max-width: 1090px) {
+    .footer__registration {
+        width: calc(50% - 20px);
+        margin-left: 20px;
+    }
+    .footer__picture {
+        width: calc(50% - 20px);
+    }
+    .footer__subtitle h2 {
+        font-size: 20px;
+    }
 }

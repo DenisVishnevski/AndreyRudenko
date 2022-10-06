@@ -41,6 +41,7 @@
     <None Remove="ClientApp\src\css\Price.tsx" />
     <None Remove="ClientApp\src\css\UI\Input.tsx" />
     <None Remove="ClientApp\src\data\shootingOptions.ts" />
+    <None Remove="ClientApp\src\scripts\checkWindowWidth.ts" />
     <None Remove="ClientApp\src\store\actions.ts" />
     <None Remove="ClientApp\src\store\reducer.ts" />
     <None Remove="ClientApp\src\store\store.ts" />
@@ -63,6 +64,7 @@
     <TypeScriptCompile Include="ClientApp\src\components\Video.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UI\Input.tsx" />
     <TypeScriptCompile Include="ClientApp\src\data\shootingOptions.ts" />
+    <TypeScriptCompile Include="ClientApp\src\scripts\Price\slideWidthCalculator.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\actions.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\reducer.ts" />
     <TypeScriptCompile Include="ClientApp\src\store\store.ts" />

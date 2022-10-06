@@ -5,8 +5,7 @@ import arrow from '../../assets/images/arrow.svg';
 import { PriceContainer } from './PriceContainer';
 import { RadioButton } from '../UI/RadioButton';
 import { baseOptions, photoOptions, videoOptions } from '../../data/shootingOptions';
-
-const clamp = (min: any, num: any, max: any) => Math.min(Math.max(num, min), max);
+import calcSlideWidth, { clamp } from '../../scripts/Price/slideWidthCalculator';
 
 interface State {
     offset: number,
@@ -16,7 +15,7 @@ interface State {
     baseOption: string,
     transition: string
 }
-let slideWidth: number = clamp(340, window.innerWidth / 4, 480);
+let slideWidth: any = calcSlideWidth();
 let actualOptionsLength: number = photoOptions.length;
 let actualHandleOffset: number = 0;
 
@@ -30,7 +29,6 @@ export class Price extends Component<{}, State> {
             sliderLocalOffset: 0,
             baseOption: 'photo',
             transition: 'left ease-out 1s'
-
         }
         this.slideRight = this.slideRight.bind(this);
         this.slideLeft = this.slideLeft.bind(this);
@@ -87,7 +85,7 @@ export class Price extends Component<{}, State> {
                 this.setState((state) => ({
                     transition: 'none',
                     containerWidth: (slideWidth * actualOptionsLength) * 3,
-                    offset: actualHandleOffset + clamp(340, slideWidth, 480) * actualOptionsLength
+                    offset: actualHandleOffset + slideWidth * actualOptionsLength
                 }))
                 break;
         }
@@ -96,8 +94,8 @@ export class Price extends Component<{}, State> {
         }))
     }
     slidesWidthUpdate (event: any) {
-        const width = event.target as Window;
-        slideWidth = clamp(340, width.innerWidth / 4, 480);
+        slideWidth = calcSlideWidth();
+        
         this.switchTab();
     }
     render() {

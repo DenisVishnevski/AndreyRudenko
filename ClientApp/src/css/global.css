@@ -31,6 +31,7 @@
     font-weight: 400;
     src: local(''), url('../assets/fonts/montserrat-v24-latin/Montserrat-Regular.woff') format('woff');
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -41,6 +42,7 @@ body {
     font-weight: normal;
     color: black;
 }
+
 h1,
 h2,
 h3,
@@ -55,19 +57,24 @@ p {
     margin: 0;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .wrapper {
-    max-width: 1420px;
+    max-width: clamp(1000px, 75vw, 1420px);
     margin: 0 auto;
 }
 
 .component {
     margin-top: 80px;
-    position: relative;
 }
 
     .component h1 {
         margin-bottom: 30px;
     }
+
 .popup_background {
     top: 0;
     left: 0;
@@ -80,4 +87,27 @@ p {
     align-items: center;
     justify-content: space-between;
     z-index: 5;
+}
+
+.black__line {
+    border-bottom: 1px solid rgb(0, 0, 0);
+    position: relative;
+    width: min(94vw, 1800px);
+    margin-left: calc(50% - min(47vw, 900px));
+}
+
+@media screen and (max-width: 1550px) {
+    .black__line {
+        width: 100%;
+        position: absolute;
+        margin-left: 0;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 1090px) {
+    .wrapper {
+        max-width: calc(100% - 40px);
+        margin-left: 20px;
+    }
 }

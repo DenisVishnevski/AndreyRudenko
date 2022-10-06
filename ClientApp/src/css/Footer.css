@@ -15,9 +15,13 @@
     padding-top: 80px;
     display: flex;
 }
-.footer__picture{
+
+.footer__picture {
+    object-fit: cover;
+    width: clamp(430px, 40vw, 770px);
     max-height: 430px;
 }
+
 .footer__registration {
     margin-left: 70px;
 }
@@ -26,10 +30,12 @@
     width: 432px;
     margin-top: 30px;
 }
+
     .footer__subtitle h2 {
         font-size: 24px;
         line-height: 130%;
     }
+
 .footer__contacts_container {
     display: flex;
     align-items: flex-start;
@@ -41,9 +47,11 @@
 .footer__list {
     display: flex;
 }
-.footer__list :last-child {
-    margin-right: 0;
-}
+
+    .footer__list :last-child {
+        margin-right: 0;
+    }
+
 footer select {
     width: 100%;
     margin-top: 30px;
@@ -59,9 +67,6 @@ footer select {
     border-radius: 0;
     outline: none;
 }
-    footer select::part(listbox) {
-        border-radius: 0;
-    }
 
 .footer__button {
     width: 120px;
@@ -86,6 +91,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #0D0D0D inset;
 }
+
 input:-webkit-autofill {
     -webkit-text-fill-color: white;
 }

@@ -1,19 +1,24 @@
 import * as React from 'react';
 import { Component } from 'react';
 import '../../css/Price.css';
-import arrow from '../../assets/images/arrow.png';
+import arrow from '../../assets/images/arrow.svg';
 import { PriceContainer } from './PriceContainer';
 import { RadioButton } from '../UI/RadioButton';
-import { baseOptions, photoOptions, videoOptions} from '../../data/shootingOptions';
+import { baseOptions, photoOptions, videoOptions } from '../../data/shootingOptions';
+
+const clamp = (min: any, num: any, max: any) => Math.min(Math.max(num, min), max);
 
 interface State {
     offset: number,
     slides: object[],
     containerWidth: number,
     sliderLocalOffset: number,
-    baseOption: string
+    baseOption: string,
+    transition: string
 }
-const slideWidth = 480;
+let slideWidth: number = clamp(340, window.innerWidth / 4, 480);
+let actualOptionsLength: number = photoOptions.length;
+let actualHandleOffset: number = 0;
 
 export class Price extends Component<{}, State> {
     constructor(props: any) {
@@ -23,51 +28,66 @@ export class Price extends Component<{}, State> {
             slides: [...photoOptions, ...photoOptions, ...photoOptions],
             containerWidth: (slideWidth * photoOptions.length) * 3,
             sliderLocalOffset: 0,
-            baseOption: "photo"
+            baseOption: 'photo',
+            transition: 'left ease-out 1s'
 
         }
         this.slideRight = this.slideRight.bind(this);
         this.slideLeft = this.slideLeft.bind(this);
         this.switchTab = this.switchTab.bind(this);
-
+        this.slidesWidthUpdate = this.slidesWidthUpdate.bind(this);
     }
     slideRight() {
         const newSlide = this.state.slides[0];
 
         this.setState((state) => ({
-            offset: state.offset + 480,
+            transition: 'left ease-out 1s',
+            offset: state.offset + slideWidth,
             slides: [...state.slides, newSlide],
-            containerWidth: state.containerWidth + 480,
-            sliderLocalOffset: state.sliderLocalOffset + 480
+            containerWidth: state.containerWidth + slideWidth,
+            sliderLocalOffset: state.sliderLocalOffset + slideWidth
         }))
+        actualHandleOffset += slideWidth;
         this.state.slides.shift();
     }
     slideLeft() {
         const newSlide = this.state.slides[this.state.slides.length - 1];
 
         this.setState((state) => ({
-            offset: state.offset - 480,
+            transition: 'left ease-out 1s',
+            offset: state.offset - slideWidth,
             slides: [newSlide, ...state.slides],
-            containerWidth: state.containerWidth + 480,
-            sliderLocalOffset: state.sliderLocalOffset - 480
+            containerWidth: state.containerWidth + slideWidth,
+            sliderLocalOffset: state.sliderLocalOffset - slideWidth
         }))
+        actualHandleOffset -= slideWidth;
         this.state.slides.pop();
     }
-    switchTab(event: any) {
-        let value = event.target.value;
+    switchTab(event?: any) {
+        let value: string = '';
+        if (event) {
+            value = event.target.value;
+        }
         switch (value) {
             case 'video':
                 this.setState((state) => ({
                     slides: [...videoOptions, ...videoOptions, ...videoOptions],
                     containerWidth: (slideWidth * videoOptions.length) * 3,
-
                 }))
+                actualOptionsLength = videoOptions.length
                 break;
             case 'photo':
                 this.setState((state) => ({
                     slides: [...photoOptions, ...photoOptions, ...photoOptions],
                     containerWidth: (slideWidth * photoOptions.length) * 3,
-
+                }))
+                actualOptionsLength = photoOptions.length
+                break;
+            default:
+                this.setState((state) => ({
+                    transition: 'none',
+                    containerWidth: (slideWidth * actualOptionsLength) * 3,
+                    offset: actualHandleOffset + clamp(340, slideWidth, 480) * actualOptionsLength
                 }))
                 break;
         }
@@ -75,7 +95,13 @@ export class Price extends Component<{}, State> {
             baseOption: value
         }))
     }
+    slidesWidthUpdate (event: any) {
+        const width = event.target as Window;
+        slideWidth = clamp(340, width.innerWidth / 4, 480);
+        this.switchTab();
+    }
     render() {
+        window.addEventListener('resize', this.slidesWidthUpdate)
         return (
             <div className="component">
                 <h1 id="4">Price</h1>
@@ -94,18 +120,21 @@ export class Price extends Component<{}, State> {
                 </div>
                 <div className="black__line"></div>
 
-                <button onClick={this.slideRight} className="slider__button_right">
-                    <img src={arrow} alt="arrow.png"></img>
-                </button>
-                <button onClick={this.slideLeft} className="slider__button_left">
-                    <img src={arrow} alt="arrow.png"></img>
-                </button>
-                <PriceContainer
-                    baseOption={this.state.baseOption}
-                    sliderOffset={this.state.offset}
-                    slides={this.state.slides}
-                    containerWidth={this.state.containerWidth}
-                    sliderLocalOffset={this.state.sliderLocalOffset} />
+                <div className="price__content">
+                    <button onClick={this.slideRight} className="slider__button_right">
+                        <img src={arrow} alt="arrow.png"></img>
+                    </button>
+                    <button onClick={this.slideLeft} className="slider__button_left">
+                        <img src={arrow} alt="arrow.png"></img>
+                    </button>
+                    <PriceContainer
+                        baseOption={this.state.baseOption}
+                        sliderOffset={this.state.offset}
+                        slides={this.state.slides}
+                        containerWidth={this.state.containerWidth}
+                        sliderLocalOffset={this.state.sliderLocalOffset}
+                        transition={this.state.transition} />
+                </div>
             </div>
         );
     }

@@ -81,7 +81,7 @@ main {
 
 
 .intro {
-    width: 1444px;
+    width: clamp(1372px, 76vw, 1440px);
     height: 650px;
     margin-top: 96px;
     display: flex;
@@ -106,13 +106,6 @@ main {
     color: white;
     margin-top: 40px;
     margin-bottom: 0;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    /*padding: 15px;
-    border: 1rem solid;*/
 }
 
 .intro__button {
@@ -140,7 +133,6 @@ img {
     line-height: 24px;
     margin-top: 30px;
     border: 1px solid white;
-    /* transition-duration: 0.4s; */
     display: none;
 }
 
@@ -155,4 +147,15 @@ img {
     margin-right: 10px;
     font-size: 20px;
     line-height: 24px;
+}
+@media screen and (max-width: 1420px){
+    .header__item {
+        margin-right: 35px;
+    }
+    .intro__photo{
+        display: none;
+    }
+    main {
+        height: 760px;
+    }
 }

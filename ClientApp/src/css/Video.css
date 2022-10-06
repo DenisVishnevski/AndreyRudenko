@@ -1,5 +1,5 @@
 ﻿.video__player video {
-        width: 1420px;
-        height: 720px;
+        width: clamp(1000px, 75vw, 1420px);
+        height: clamp(550px, 38.5vw, 780px);
         background-color: #000000;
     }

@@ -16,19 +16,38 @@
 .stw__text {
     padding: 20px;
 }
+
 .row {
-    width: 1420px;
     margin: 0;
     flex-wrap: nowrap;
 }
+
     .row .column:last-child {
         padding-right: 0;
-        width: 340px;
     }
+
 .column {
     padding: 0;
     margin-top: 20px;
-    padding-right: 20px;
-    width: 360px;
+    margin-right: 20px;
+    width: min(17.8vw, 340px);
 }
 
+@media screen and (max-width: 1420px) {
+    .row {
+        display: grid;
+        grid-template-columns: repeat(2, 51%);
+    }
+        .row .column:nth-child(even) {
+            margin-right: 0;
+        }
+
+    .column {
+        width: calc(100% - 20px);
+    }
+        .column img {
+            object-fit: cover;
+            max-height: 440px;
+            width: 100%;
+        }
+}

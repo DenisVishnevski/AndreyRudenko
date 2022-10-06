@@ -7,13 +7,15 @@ interface Props {
     containerWidth: number,
     sliderLocalOffset: number,
     sliderOffset: number,
-    baseOption: string
+    baseOption: string,
+    transition: string
 }
 export class PriceContainer extends Component<Props> {
 
     render() {
         const styles = {
             Row: {
+                transition: this.props.transition,
                 left: -this.props.sliderOffset + 'px',
                 width: this.props.containerWidth + 'px'
             },

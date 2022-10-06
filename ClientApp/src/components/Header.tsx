@@ -54,10 +54,6 @@ export class Header extends Component {
                                 <a className="intro__button_mobile">
                                     Sign up
                                 </a>
-                                <div className="intro__languages">
-                                    <a href="#1" className="header__link">En </a>
-                                    <a href="#1" className="header__link">Ru</a>
-                                </div>
 
                             </div>
                             <div className="intro__photo">

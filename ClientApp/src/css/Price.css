@@ -1,6 +1,9 @@
 ﻿.price__container {
     overflow: hidden;
 }
+.price__content{
+    position: relative;
+}
 .price__button_list {
     display: flex;
     align-items: center;
@@ -41,7 +44,6 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    transition: left ease-out 1s;
     left: 0;
 }
 .price__row_wrapper{
@@ -61,11 +63,12 @@
     padding-right: 20px;
     padding-left: 0;
     margin-top: 20px;
-    width: 480px;
+    width: min(25vw, 480px);
+    min-width: 340px;
 }
 .slider__button_right {
     position: absolute;
-    top: 300px;
+    top: 180px;
     right: -100px;
     background-color: #ffffff;
     border: none;
@@ -76,7 +79,7 @@
     transform: scale(-1, 1);
     position: absolute;
     left: -100px;
-    top: 300px;
+    top: 180px;
     background-color: #ffffff;
     border: none;
     cursor: pointer;

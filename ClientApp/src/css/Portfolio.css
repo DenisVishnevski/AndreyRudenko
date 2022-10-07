@@ -38,3 +38,16 @@
     line-height: 24px;
     padding: 0;
 }
+@media screen and (max-width: 767px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% + 10px));
+        padding-top: 20px;
+    }
+        .gallery .gallery__image:nth-child(even) {
+            margin-right: 0;
+        }
+    .gallery__image {
+        min-height: 150px;
+    }
+}

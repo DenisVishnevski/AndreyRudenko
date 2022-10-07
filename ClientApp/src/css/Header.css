@@ -146,3 +146,41 @@ main {
         display: none;
     }
 }
+@media screen and (max-width: 767px) {
+    .intro__title {
+        font-size: 63px;
+        line-height: 75px;
+    }
+    main {
+        height: 630px;
+        position: relative;
+    }
+    .intro {
+        width: 100%;
+    }
+    .intro__button {
+        width: calc(100% - 40px);
+        position: absolute;
+        bottom: 20px;
+    }
+    .header__item{
+        font-size: 18px;
+        margin-right: 20px;
+    }
+}
+@media screen and (max-width: 479px) {
+    main {
+        height: 610px;
+    }
+
+        main .header__list :first-child {
+            display: none;
+        }
+    .intro__title {
+        font-size: 45px;
+        line-height: 56px;
+    }
+    .intro__subtitle {
+        font-size: 35px;
+    }
+}

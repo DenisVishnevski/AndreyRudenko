@@ -32,12 +32,15 @@
     margin-right: 20px;
     width: min(17.8vw, 340px);
 }
-
+.stw__text p {
+    padding-top: 20px
+}
 @media screen and (max-width: 1420px) {
     .row {
         display: grid;
         grid-template-columns: repeat(2, 51%);
     }
+
         .row .column:nth-child(even) {
             margin-right: 0;
         }
@@ -45,9 +48,40 @@
     .column {
         width: calc(100% - 20px);
     }
+
         .column img {
             object-fit: cover;
             max-height: 440px;
             width: 100%;
+        }
+}
+
+@media screen and (max-width: 767px) {
+    .row {
+        display: block;
+        padding-top: 20px;
+    }
+
+        .row .column:first-child {
+            margin-top: 0;
+        }
+
+    .column {
+        width: calc(100%);
+        margin-right: 0;
+    }
+
+        .column img {
+            display: none;
+        }
+
+    .stw__text {
+        padding-top: 0;
+    }
+        .stw__text b {
+            display: block;
+            text-align: center;
+            padding-bottom: 17px;
+            border-bottom: 1px solid rgb(0, 0, 0);
         }
 }

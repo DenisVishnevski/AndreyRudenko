@@ -26,5 +26,17 @@ const tablet = () => {
     }
     return false
 }
+const bigPhone = () => {
+    if (window.innerWidth >= 480) {
+        return window.innerWidth * 0.475
+    }
+    return false
+}
+const phone = () => {
+    if (window.innerWidth < 480) {
+        return window.innerWidth * 0.93
+    }
+    return false
+}
 
-const checkFunctionsArray = [desktop, tablet]
+const checkFunctionsArray = [desktop, tablet, bigPhone, phone]

@@ -227,9 +227,6 @@ class Footer extends Component<{ shootingOptions: any }, State> {
                             <li className="header__item">
                                 <a href="#1" className="header__link">VK</a>
                             </li>
-                            <li className="header__item">
-                                <a href="#1" className="header__link">YouTube</a>
-                            </li>
                         </ul>
                         <div className="footer__contacts">
                             <ul className="footer__list">

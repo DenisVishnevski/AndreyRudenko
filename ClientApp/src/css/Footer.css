@@ -95,15 +95,45 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
     -webkit-text-fill-color: white;
 }
+
 @media screen and (max-width: 1090px) {
     .footer__registration {
         width: calc(50% - 20px);
         margin-left: 20px;
     }
+
     .footer__picture {
         width: calc(50% - 20px);
     }
+
     .footer__subtitle h2 {
         font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer__picture {
+        display: none;
+    }
+
+    .footer__registration {
+        width: calc(100% - 20px);
+        margin-left: 0;
+    }
+
+    .footer__button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .footer__contacts_container {
+        display: block;
+    }
+        .footer__contacts_container * {
+            margin-top: 10px;
+        }
+    .footer__contacts_container * :first-child{
+        padding-left: 0px;
     }
 }

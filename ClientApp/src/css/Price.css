@@ -149,3 +149,13 @@
         width: 32.5vw;
     }
 }
+@media screen and (max-width: 767px) {
+    .price__column {
+        width: 47.5vw;
+    }
+}
+@media screen and (max-width: 479px) {
+    .price__column {
+        width: 93vw;
+    }
+}

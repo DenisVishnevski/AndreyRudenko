@@ -1,22 +1,58 @@
 ﻿
 .popup_image {
     position: relative;
-    min-height: 65vh;
     max-height: 85vh;
-    max-width: 70vw;
+    max-width: 65vw;
 }
+
 .popup_left_arrow {
+    position: absolute;
     transform: scale(-1, 1);
     height: 7.5vh;
-    margin-left: 8.70vw;
+    left: 10vw;
 }
+
 .popup_right_arrow {
+    position: absolute;
     height: 7.5vh;
-    margin-right: 9.92vw;
+    right: 10vw;
 }
+
 .popup_x {
     position: absolute;
     height: 7.5vh;
-    right: 9.92vw;
+    right: 10vw;
     top: 3vw
+}
+
+@media screen and (max-width: 1420px) {
+    .popup_left_arrow {
+        left: 8vw;
+        height: 4vh;
+    }
+
+    .popup_right_arrow {
+        right: 8vw;
+        height: 4vh;
+    }
+
+    .popup_x {
+        height: 4vh;
+    }
+}
+@media screen and (max-width: 767px) {
+    .popup_image {
+        max-width: 85vw;
+    }
+    .popup_left_arrow {
+       display: none;
+    }
+
+    .popup_right_arrow {
+        display: none;
+    }
+    .popup_x {
+        right: 3vw;
+        top: 3vw
+    }
 }

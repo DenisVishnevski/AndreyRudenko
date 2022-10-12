@@ -6,6 +6,7 @@ import { PriceContainer } from './PriceContainer';
 import { RadioButton } from '../UI/RadioButton';
 import { baseOptions, photoOptions, videoOptions } from '../../data/shootingOptions';
 import calcSlideWidth, { clamp } from '../../scripts/Price/slideWidthCalculator';
+import { handleTouchEnd, handleTouchStart } from '../../scripts/touchHandling/touchHandler';
 
 interface State {
     offset: number,
@@ -34,7 +35,22 @@ export class Price extends Component<{}, State> {
         this.slideLeft = this.slideLeft.bind(this);
         this.switchTab = this.switchTab.bind(this);
         this.slidesWidthUpdate = this.slidesWidthUpdate.bind(this);
+        this.onTouchEnd = this.onTouchEnd.bind(this);
     }
+    onTouchEnd(event: any) {
+        this.actionHandler(handleTouchEnd(event));
+    }
+    actionHandler(swipeDirection: any) {
+        switch (swipeDirection) {
+            case 1:
+                this.slideRight();
+                break;
+            case -1:
+                this.slideLeft();
+                break;
+        }
+    }
+
     slideRight() {
         const newSlide = this.state.slides[0];
 
@@ -93,9 +109,9 @@ export class Price extends Component<{}, State> {
             baseOption: value
         }))
     }
-    slidesWidthUpdate (event: any) {
+    slidesWidthUpdate(event: any) {
         slideWidth = calcSlideWidth();
-        
+
         this.switchTab();
     }
     render() {
@@ -118,7 +134,7 @@ export class Price extends Component<{}, State> {
                 </div>
                 <div className="black__line"></div>
 
-                <div className="price__content">
+                <div className="price__content" onTouchStart={handleTouchStart} onTouchEnd={this.onTouchEnd}>
                     <button onClick={this.slideRight} className="slider__button_right">
                         <img src={arrow} alt="arrow.png"></img>
                     </button>

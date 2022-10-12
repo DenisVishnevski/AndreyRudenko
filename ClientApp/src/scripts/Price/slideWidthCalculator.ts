@@ -6,8 +6,7 @@ export default function calcSlideWidth() {
     for (let index = 0; index < checkFunctionsArray.length; index++) {
         const value = checkFunctionsArray[index]();
         if (value) {
-            actualslideWidth = value
-            console.log(value);
+            actualslideWidth = value;
             return value
         }
     }
@@ -16,7 +15,7 @@ export default function calcSlideWidth() {
 
 const desktop = () => {
     if (window.innerWidth >= 1090) {
-        return clamp (340, window.innerWidth * 0.251, 480)
+        return clamp (340, window.innerWidth * 0.252, 480)
     }
     return false
 }

@@ -27,7 +27,7 @@
 
 .optionsMenu {
     width: 100%;
-    background-color: white;
+    background-color: #0D0D0D;
     transition: all ease .4s;
     position: absolute;
     overflow: hidden;
@@ -39,7 +39,6 @@
 .selector__option {
     width: 100%;
     border-bottom: 1px solid white;
-    background-color: #0D0D0D;
     color: white;
     font-size: 20px;
 }

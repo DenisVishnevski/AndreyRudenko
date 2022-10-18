@@ -12,7 +12,14 @@ interface Props {
     baseOption: string,
     changeShootingOptions: any
 }
+let baseOption: string = "photo";
 class PriceSlide extends Component<Props> {
+
+    componentDidUpdate(prevProps: any) {
+        if (prevProps.baseOption != this.props.baseOption) {
+            baseOption = this.props.baseOption;
+        }
+    }
     render() {
         return (
             <div className="price__column">
@@ -31,7 +38,7 @@ class PriceSlide extends Component<Props> {
                     <div className="price__button_container">
                         <a className="price__button"
                             href="#5"
-                            onClick={() => this.props.changeShootingOptions({ baseOption: this.props.baseOption, otherOption: this.props.title })}>
+                            onClick={() => this.props.changeShootingOptions({ baseOption: baseOption, otherOption: this.props.title })}>
                             {this.props.price + 'Р'}
                         </a>
                     </div>

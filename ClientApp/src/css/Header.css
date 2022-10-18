@@ -50,6 +50,8 @@ main {
 
 .header__burger {
     display: none;
+    height: 25px;
+    width: 25px;
     margin-right: 30px;
 }
 
@@ -145,14 +147,24 @@ main {
     .header__nav {
         display: none;
     }
+    main {
+        height: 679px;
+    }
+    .intro {
+        margin-top: 100px;
+    }
+    .intro__title {
+        padding-top: 40px;
+    }
 }
 @media screen and (max-width: 767px) {
     .intro__title {
+        padding: 0;
         font-size: 63px;
         line-height: 75px;
     }
     main {
-        height: 630px;
+        height: 550px;
         position: relative;
     }
     .intro {
@@ -167,10 +179,13 @@ main {
         font-size: 18px;
         margin-right: 20px;
     }
+    .intro__subtitle {
+        margin-top: 30px;
+    }
 }
 @media screen and (max-width: 479px) {
     main {
-        height: 610px;
+        height: 534px;
     }
 
         main .header__list :first-child {

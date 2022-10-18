@@ -36,3 +36,13 @@
         content: "";
 
     }
+@media screen and (max-width: 767px) {
+    .radio_button label {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 479px) {
+    .radio_button label {
+        font-size: 15px;
+    }
+}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import '../css/Portfolio.css';
 import { GalleryPopup } from './Popups/GalleryPopup';
+import { Img } from './UI/Img';
 import { RadioButton } from './UI/RadioButton';
 
 interface State {
@@ -156,8 +157,8 @@ export class Portfolio extends Component<{}, State> {
                 </div>
                 <div className="black__line"></div>
                 <div className="gallery">
-                    {gallery.map((image: any) =>
-                        <img onClick={this.openImage} className="gallery__image" src={this.state.imagePath + image.name} alt="Image" id={image.name} />
+                    {gallery.map((image: any) => 
+                        <Img onClick={this.openImage} className="gallery__image" src={this.state.imagePath + image.name} alt="Image" id={image.name} />
                     )}
                 </div>
                 <div className="gallery__buttons">

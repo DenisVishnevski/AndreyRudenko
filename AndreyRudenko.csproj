@@ -37,6 +37,7 @@
     <None Remove="ClientApp\src\components\Price\PriceSlide.tsx" />
     <None Remove="ClientApp\src\components\StagesOfWork.tsx" />
     <None Remove="ClientApp\src\components\StagesOfWork\StageColumn.tsx" />
+    <None Remove="ClientApp\src\components\UI\Img.tsx" />
     <None Remove="ClientApp\src\components\UI\RadioButton.tsx" />
     <None Remove="ClientApp\src\components\Video.tsx" />
     <None Remove="ClientApp\src\css\Price.tsx" />
@@ -63,6 +64,7 @@
     <TypeScriptCompile Include="ClientApp\src\components\Price\PriceSlide.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\StagesOfWork\StageColumn.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\StagesOfWork\StagesOfWork.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\components\UI\Img.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UI\RadioButton.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\UI\Selector.tsx" />
     <TypeScriptCompile Include="ClientApp\src\components\Video.tsx" />

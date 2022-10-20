@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
 import '../css/AboutMe.css';
-import picture1 from '../assets/images/river.jpg';
-import picture2 from '../assets/images/rock.jpg';
+import picture1 from '../assets/images/landscape1.jpg';
+import picture2 from '../assets/images/landscape2.jpg';
 
 export class AboutMe extends Component {
 

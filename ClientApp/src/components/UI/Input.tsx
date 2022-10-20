@@ -12,12 +12,6 @@ interface Props {
     onChange: any
 }
 export class Input extends Component<Props> {
-    constructor(props: any) {
-        super(props)
-        this.state = {
-            inputElementsColor: "white"
-        }
-    }
     render() {
         const { type, name, value, onChange, children} = this.props;
         return (

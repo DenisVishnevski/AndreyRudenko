@@ -16,7 +16,7 @@ let baseOption: string = "photo";
 class PriceSlide extends Component<Props> {
 
     componentDidUpdate(prevProps: any) {
-        if (prevProps.baseOption != this.props.baseOption) {
+        if (prevProps.baseOption != this.props.baseOption && this.props.baseOption) {
             baseOption = this.props.baseOption;
         }
     }

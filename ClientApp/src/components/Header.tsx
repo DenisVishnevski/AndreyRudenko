@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
 import portrait from '../assets/images/IMAGE 2022-05-06 13_12_23 1 1.png';
-import menuBurger from '../assets/images/menuBurger.svg';
 import '../css/Header.css';
+import { MenuBurger } from './UI/MenuBurger';
 
 export class Header extends Component {
     render() {
@@ -11,9 +11,7 @@ export class Header extends Component {
                 <header>
                     <div className="wrapper">
                         <div className="header__wrapper">
-                            <div className="header__burger">
-                                <img src={menuBurger} alt="Burger" width="40" height="40"></img>
-                            </div>
+                            <MenuBurger  />
                             <nav className="header__nav">
                                 <ul className="header__list">
                                     <li className="header__item">

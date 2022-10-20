@@ -18,6 +18,10 @@
     right: 10vw;
 }
 
+    .popup_right_arrow:active, .popup_left_arrow:active {
+        height: 7vh;
+    }
+
 .popup_x {
     position: absolute;
     height: 7.5vh;
@@ -35,22 +39,27 @@
         right: 8vw;
         height: 4vh;
     }
-
+        .popup_right_arrow:active, .popup_left_arrow:active {
+            height: 3.5vh;
+        }
     .popup_x {
         height: 4vh;
     }
 }
+
 @media screen and (max-width: 767px) {
     .popup_image {
         max-width: 85vw;
     }
+
     .popup_left_arrow {
-       display: none;
+        display: none;
     }
 
     .popup_right_arrow {
         display: none;
     }
+
     .popup_x {
         right: 3vw;
         top: 3vw

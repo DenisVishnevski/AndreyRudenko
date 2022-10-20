@@ -3,6 +3,7 @@ import { Component } from 'react';
 import arrow from '../../assets/images/arrowWhite.svg'
 import x from '../../assets/images/whiteX.svg'
 import '../../css/Popups/GalleryPopup.css';
+import { handleTouchEnd, handleTouchStart } from '../../scripts/touchHandling/touchHandler';
 
 interface Props {
     closePopup: any,
@@ -28,6 +29,7 @@ export class GalleryPopup extends Component<Props, State> {
         this.close = this.close.bind(this);
         this.nextImage = this.nextImage.bind(this);
         this.prevImage = this.prevImage.bind(this);
+        this.onTouchEnd = this.onTouchEnd.bind(this);
     }
     componentDidMount() {
         let { actualImageName, imageArray } = this.props
@@ -48,6 +50,19 @@ export class GalleryPopup extends Component<Props, State> {
             isLoading: false
         });
     }
+    onTouchEnd(event: any) {
+        this.actionHandler(handleTouchEnd(event));
+    }
+    actionHandler(swipeDirection: any) {
+        switch (swipeDirection) {
+            case 1:
+                this.nextImage();
+                break;
+            case -1:
+                this.prevImage();
+                break;
+        }
+    }
     nextImage() {
         let newGalleryIndex: number = this.state.actualGalleryIndex + 1
         if (this.state.gallery[newGalleryIndex] == undefined) {
@@ -66,14 +81,13 @@ export class GalleryPopup extends Component<Props, State> {
         this.setState((state) => ({
             actualGalleryIndex: newGalleryIndex
         }));
-        console.log(newGalleryIndex)
     }
     close() {
         this.props.closePopup();
     }
     render() {
         return (
-            <div className="popup_background">
+            <div className="popup_background" onTouchStart={handleTouchStart} onTouchEnd={this.onTouchEnd}>
                 <img className="popup_x" src={x} alt="Left Button" onClick={this.close} />
                 <img className="popup_left_arrow" src={arrow} alt="Left Button" onClick={this.prevImage} />
                 {this.state.isLoading

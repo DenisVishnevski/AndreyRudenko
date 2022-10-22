@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import '../css/Portfolio.css';
 import { GalleryPopup } from './Popups/GalleryPopup';
-import { Img } from './UI/Img';
+import Img from './UI/Img';
 import { RadioButton } from './UI/RadioButton';
 
 interface State {
@@ -57,7 +57,7 @@ export class Portfolio extends Component<{}, State> {
             if (array[imageCount]) {
                 newGalleryBlock.push(array[imageCount]);
             }
-            if (array[imageCount + 1] == undefined) {
+            if (array[imageCount + 1] === undefined) {
                 this.setState((state) => ({
                     viewMoreButton: 'none'
                 }));
@@ -150,7 +150,7 @@ export class Portfolio extends Component<{}, State> {
                 <h1 id="2">Portfolio</h1>
                 <div className="radio_buttons__list">
                     {galleryButtons.map((button: any) =>
-                        <div className="radio_button" >
+                        <div className="radio_button" key={button.value} >
                             <RadioButton className="radio_button__title" id={button.id} name="portfolio__button" value={button.value} onChange={this.switchTab} isChecked={button.isChecked}>{button.value}</RadioButton>
                         </div>
                     )}
@@ -158,7 +158,7 @@ export class Portfolio extends Component<{}, State> {
                 <div className="black__line"></div>
                 <div className="gallery">
                     {gallery.map((image: any) => 
-                        <Img onClick={this.openImage} className="gallery__image" src={this.state.imagePath + image.name} alt="Image" id={image.name} />
+                        <Img key={image.name} onClick={this.openImage} className="gallery__image" src={this.state.imagePath + image.name} alt="Image" id={image.name} />
                     )}
                 </div>
                 <div className="gallery__buttons">

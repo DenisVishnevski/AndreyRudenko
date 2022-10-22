@@ -1,4 +1,4 @@
-﻿export const clamp = (min: any, num: any, max: any) => Math.min(Math.max(num, min), max);
+export const clamp = (min: any, num: any, max: any) => Math.min(Math.max(num, min), max);
 
 let actualslideWidth: any = 0;
 

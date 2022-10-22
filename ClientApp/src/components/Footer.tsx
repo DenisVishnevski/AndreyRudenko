@@ -48,26 +48,26 @@ class Footer extends Component<{ shootingOptions: any }, State> {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidUpdate(prevProps: any) {
-        if (prevProps.shootingOptions != this.props.shootingOptions) {
+        if (prevProps.shootingOptions !== this.props.shootingOptions) {
             this.selectBaseOption(this.props.shootingOptions.baseOption);
             this.selectOtherOption(this.props.shootingOptions.otherOption);
         }
     }
     addOtherOptionSelector(baseOptionValue: string) {
         switch (baseOptionValue) {
-            case "photo": {
+            case "photo": 
                 this.setState((state) => ({
                     otherOptions: photoOptions,
                     baseOptionsSelected: true
                 }));
-            }
+            
                 break;
-            case "video": {
+            case "video": 
                 this.setState((state) => ({
                     otherOptions: videoOptions,
                     baseOptionsSelected: true
                 }));
-            }
+            
                 break;
         }
         this.selectorsLabelDefault(Selectors.otherSelector);
@@ -100,13 +100,13 @@ class Footer extends Component<{ shootingOptions: any }, State> {
             this.selectorsLabelDefault();
             this.openPopup();
         }
-        else if (inputNameValidation && inputContactValidation == false) {
+        else if (inputNameValidation && inputContactValidation === false) {
             this.setState((state) => ({
                 isContactInputColor: this.errorInputColor,
                 isNameInputColor: this.defaultInputColor
             }))
         }
-        else if (inputNameValidation == false && inputContactValidation) {
+        else if (inputNameValidation === false && inputContactValidation) {
             this.setState((state) => ({
                 isNameInputColor: this.errorInputColor,
                 isContactInputColor: this.defaultInputColor
@@ -121,12 +121,12 @@ class Footer extends Component<{ shootingOptions: any }, State> {
         event.preventDefault();
     }
     selectorsLabelDefault(selector?: Selectors) {
-        if (selector == Selectors.baseSelector) {
+        if (selector === Selectors.baseSelector) {
             this.setState((state) => ({
                 baseOption: this.defaultSelectorLabel
             }))
         }
-        else if (selector == Selectors.otherSelector) {
+        else if (selector === Selectors.otherSelector) {
             this.setState((state) => ({
                 otherOption: this.defaultSelectorLabel
             }))

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
 import '../css/Video.css';
-import video from '../assets/videos/video.mp4'
-import playButton from '../assets/images/playButton.svg'
-import { ReactInstance } from 'react';
+import video from '../assets/videos/videoPortfolio.mp4';
+import playButton from '../assets/images/playButton.svg';
+import videoPreview from '../assets/images/videoPreview.png';
 
 export class Video extends Component<{}, { isControls: boolean, isPlayButton: string }> {
     constructor(props: any) {
@@ -35,9 +35,14 @@ export class Video extends Component<{}, { isControls: boolean, isPlayButton: st
             <div className="component">
                 <h1>Video</h1>
                 <div className="video__player_container">
-                    <video onClick={this.playVideo} src={video} className="video__player" controls={this.state.isControls} disablePictureInPicture controlsList="nodownload noremoteplayback">
+                    <video onClick={this.playVideo}
+                        src={video} className="video__player"
+                        poster={videoPreview}
+                        controls={this.state.isControls}
+                        disablePictureInPicture
+                        controlsList="nodownload noremoteplayback">
                     </video>
-                    <img className="video__play_button" style={{ display: this.state.isPlayButton }} src={playButton} />
+                    <img className="video__play_button" style={{ display: this.state.isPlayButton }} src={playButton} alt="Play"/>
                 </div>
             </div>
 

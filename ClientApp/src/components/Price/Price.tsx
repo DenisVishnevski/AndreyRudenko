@@ -6,7 +6,7 @@ import arrowMobile from '../../assets/images/arrowMobile.svg';
 import { PriceContainer } from './PriceContainer';
 import { RadioButton } from '../UI/RadioButton';
 import { baseOptions, photoOptions, videoOptions } from '../../data/shootingOptions';
-import calcSlideWidth, { clamp } from '../../scripts/Price/slideWidthCalculator';
+import calcSlideWidth from '../../scripts/Price/slideWidthCalculator';
 import { handleTouchEnd, handleTouchStart } from '../../scripts/touchHandling/touchHandler';
 
 interface State {
@@ -123,7 +123,7 @@ export class Price extends Component<{}, State> {
                 <div className="price__button_panel">
                     <div className="radio_buttons__list">
                         {baseOptions.map((button: any) =>
-                            <div className="radio_button">
+                            <div className="radio_button" key={button.value}>
                                 <RadioButton
                                     className="radio_button__title"
                                     id={button.id} name="price__button"

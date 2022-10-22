@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router'
 import Layout  from './components/Layout';
 import { AboutMe } from './components/AboutMe';
 import { Portfolio } from './components/Portfolio';

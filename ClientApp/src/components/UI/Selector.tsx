@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import '../../css/UI/Selector.css';
 import store from '../../store/store';
@@ -38,7 +38,7 @@ export class Selector extends Component<Props, State> {
         this.openOptionsMenu();
     }
     closeOptionsMenu() {
-        if (this.state.optionMenuHeight != 0) {
+        if (this.state.optionMenuHeight !== 0) {
             this.setState((state) => ({
                 optionMenuHeight: 0,
                 arrowDirection: 1
@@ -46,7 +46,7 @@ export class Selector extends Component<Props, State> {
         }
     }
     openOptionsMenu() {
-        if (this.state.optionMenuHeight == 0) {
+        if (this.state.optionMenuHeight === 0) {
             this.setState((state) => ({
                 optionMenuHeight: this.props.options.length * 40,
                 arrowDirection: -1
@@ -66,7 +66,7 @@ export class Selector extends Component<Props, State> {
                 </button>
                 <div className="optionsMenu" style={{ height: this.state.optionMenuHeight + 'px', zIndex: this.props.zIndex }}>
                     {this.props.options.map((button: any) =>
-                        <div className="selector__option">
+                        <div className="selector__option" key={button.value}>
                             <RadioButton
                                 id={"s" + button.id}
                                 name="option"

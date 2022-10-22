@@ -1,4 +1,4 @@
-﻿import { swipeHandler } from "./swipeHandler";
+import { swipeHandler } from "./swipeHandler";
 
 let touchStartLocation: { x: number, y: number };
 let touchEndLocation: { x: number, y: number };

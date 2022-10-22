@@ -76,7 +76,7 @@
         margin-right: 0;
     }
 
-    .stw__image img {
+    .stw__image .img_container {
         display: none;
     }
 

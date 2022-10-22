@@ -3,6 +3,7 @@ import { Component } from 'react';
 import '../css/AboutMe.css';
 import picture1 from '../assets/images/landscape1.jpg';
 import picture2 from '../assets/images/landscape2.jpg';
+import Img from './UI/Img';
 
 export class AboutMe extends Component {
 
@@ -17,10 +18,10 @@ export class AboutMe extends Component {
                             photographer and a person who loves his job, I help with posing at a photo shoot, teach you how to stand
                             up correctly, show where to put your hands, where to look, how to get slimmer in a photo, tell you how
                             to deal with stress and many other points that will help you get make the most of your photo session!</p>
-                        <img src={picture1} alt="s"></img>
+                        <Img src={picture1} alt="Фото пейзажа"/>
                     </div>
                     <div className="right__container">
-                        <img src={picture2} alt="Картинка"></img>
+                        <Img src={picture2} alt="Фото пейзажа"/>
                         <p>Also, in addition to photo shoots, I shoot video films. It could be your product, any event, or a love
                             story. I will help you and your partner discover your most sensual side and sneakily follow your love.
                             If you want to see from the outside how sensual and wonderful a person you are, then I offer my help

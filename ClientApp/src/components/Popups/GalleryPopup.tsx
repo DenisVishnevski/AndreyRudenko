@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import arrow from '../../assets/images/arrowWhite.svg'
 import x from '../../assets/images/whiteX.svg'
@@ -34,12 +34,12 @@ export class GalleryPopup extends Component<Props, State> {
     componentDidMount() {
         let { actualImageName, imageArray } = this.props
 
-        let actualImageIndex: number = imageArray.findIndex((image: { name: string }) => image.name == actualImageName);
+        let actualImageIndex: number = imageArray.findIndex((image: { name: string }) => image.name === actualImageName);
  
         let actualimageArray: any = [];
         for (let index = 0; index < imageArray.length; index++) {
             let newIndex: number = index + actualImageIndex;
-            if (imageArray[newIndex] == undefined) {
+            if (imageArray[newIndex] === undefined) {
                 newIndex = index - imageArray.length + actualImageIndex;
             }
             actualimageArray[index] = imageArray[newIndex];
@@ -65,14 +65,14 @@ export class GalleryPopup extends Component<Props, State> {
     }
     nextImage() {
         let newGalleryIndex: number = this.state.actualGalleryIndex + 1
-        if (this.state.gallery[newGalleryIndex] == undefined) {
+        if (this.state.gallery[newGalleryIndex] === undefined) {
             newGalleryIndex = 0;
         }
         this.changeImage(newGalleryIndex)
     }
     prevImage() {
         let newGalleryIndex: number = this.state.actualGalleryIndex - 1
-        if (this.state.gallery[newGalleryIndex] == undefined) {
+        if (this.state.gallery[newGalleryIndex] === undefined) {
             newGalleryIndex = this.state.gallery.length - 1;
         }
         this.changeImage(newGalleryIndex)
@@ -92,7 +92,7 @@ export class GalleryPopup extends Component<Props, State> {
                 <img className="popup_left_arrow" src={arrow} alt="Left Button" onClick={this.prevImage} />
                 {this.state.isLoading
                     ? null
-                    : <img className="popup_image" src={this.props.imagePath + this.state.gallery[this.state.actualGalleryIndex].name} alt="Image" />
+                    : <img className="popup_image" src={this.props.imagePath + this.state.gallery[this.state.actualGalleryIndex].name} alt="PortfolioPicture" />
                     }
                 <img className="popup_right_arrow" src={arrow} alt="Right Button" onClick={this.nextImage} />
             </div>

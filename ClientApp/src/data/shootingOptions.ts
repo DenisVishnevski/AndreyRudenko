@@ -1,4 +1,4 @@
-﻿export const photoOptions: object[] = [
+export const photoOptions: object[] = [
     { id: "po1", value: "portraits", price: 450 },
     { id: "po2", value: "family", price: 2300 },
     { id: "po3", value: "events", price: 380 },

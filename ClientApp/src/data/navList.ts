@@ -1,4 +1,4 @@
-﻿export const navList: object[] = [
+export const navList: object[] = [
     { href: "#1", name: "about me" },
     { href: "#2", name: "portfolio" },
     { href: "#3", name: "stages of work" },

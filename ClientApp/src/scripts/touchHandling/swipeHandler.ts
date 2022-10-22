@@ -1,21 +1,15 @@
-﻿let isHorizontalSwipe: boolean;
-let isVerticalSwipe: boolean;
+let isHorizontalSwipe: boolean;
 let horizontalSwipeLength: number;
 let verticalSwipeLength: number;
 
 export function swipeHandler(touchStartLocation: { x: number, y: number }, touchEndLocation: { x: number, y: number }) {
     isHorizontalSwipe = false;
-    isVerticalSwipe = false;
     horizontalSwipeLength = Math.abs(touchStartLocation.x - touchEndLocation.x);
     verticalSwipeLength = Math.abs(touchStartLocation.y - touchEndLocation.y);
 
     if (horizontalSwipeLength > verticalSwipeLength) {
         isHorizontalSwipe = true;
     }
-    if (horizontalSwipeLength < verticalSwipeLength) {
-        isVerticalSwipe = true;
-    }
-
     if (horizontalSwipeLength > 40 || verticalSwipeLength > 40) {
         return fuswipeDirectionChecking(touchStartLocation, touchEndLocation)
     }

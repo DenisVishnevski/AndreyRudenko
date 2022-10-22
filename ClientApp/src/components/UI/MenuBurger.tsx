@@ -1,9 +1,9 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import '../../css/UI/MenuBurger.css';
 import { DroprightMenu } from './DroprightMenu';
 
-export class MenuBurger extends Component<{}, { classNames: string, isOpen: boolean }> {
+export class MenuBurger extends Component<{ startAutoScrolling: any}, { classNames: string, isOpen: boolean }> {
     constructor(props: any) {
         super(props)
         this.state = {
@@ -20,7 +20,7 @@ export class MenuBurger extends Component<{}, { classNames: string, isOpen: bool
         this.closeMenu();
     }
     openMenu() {
-        if (this.state.isOpen == false) {
+        if (this.state.isOpen === false) {
             this.setState(() => ({
                 classNames: "header__burger open",
                 isOpen: true
@@ -43,7 +43,7 @@ export class MenuBurger extends Component<{}, { classNames: string, isOpen: bool
                     <span></span>
                 </div>
                 
-                <DroprightMenu closeMenu={this.closeMenu} isOpenMenu={this.state.isOpen} />
+                <DroprightMenu closeMenu={this.closeMenu} isOpenMenu={this.state.isOpen} startAutoScrolling={this.props.startAutoScrolling}/>
             </div>
         );
     }

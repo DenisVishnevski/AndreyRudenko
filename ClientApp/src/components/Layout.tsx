@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { Grid } from './Grid';
-import { Header } from './Header';
+import Header from './Header';
 import Footer from './Footer';
 import { bindActionCreators } from 'redux';
 import { changeIsClick } from '../store/actions';

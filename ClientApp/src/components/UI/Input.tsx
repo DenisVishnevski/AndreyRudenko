@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import '../../css/UI/Input.css';
 import errorIcon from '../../assets/images/Error.svg'
@@ -23,8 +23,8 @@ export class Input extends Component<Props> {
                     name={name}
                     onChange={onChange}>
                 </input>
-                {this.props.elementsColor == "#FF3E3E" 
-                    ? <img src={errorIcon} />
+                {this.props.elementsColor === "#FF3E3E"
+                    ? <img src={errorIcon} alt="Error" />
                     : null
                 }
             </fieldset>

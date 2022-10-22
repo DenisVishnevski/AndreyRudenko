@@ -16,6 +16,7 @@
     height: 140px;
     pointer-events: none;
 }
+
 @media screen and (max-width: 1090px) {
     .video__player {
         width: 100%;
@@ -25,7 +26,8 @@
 
 @media screen and (max-width: 767px) {
     .video__player_container {
-        width: 100%;
+        width: 100vw;
+        left: -20px;
         height: 57vw;
     }
 
@@ -34,6 +36,7 @@
         position: absolute;
         left: 0;
     }
+
     .video__play_button {
         left: calc(50% - 35px);
         top: calc(50% - 35px);

@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,7 +16,7 @@ let baseOption: string = "photo";
 class PriceSlide extends Component<Props> {
 
     componentDidUpdate(prevProps: any) {
-        if (prevProps.baseOption != this.props.baseOption && this.props.baseOption) {
+        if (prevProps.baseOption !== this.props.baseOption && this.props.baseOption) {
             baseOption = this.props.baseOption;
         }
     }

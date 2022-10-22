@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+import * as React from 'react';
 import { Component } from 'react';
 import tick from '../../assets/images/tick.png'
 import x from '../../assets/images/x.png'
@@ -20,10 +20,10 @@ export class FooterPopup extends Component<{ closePopup: any }> {
             <div className="popup_background">
                 <div className="footer_popup">
                     <button className="popup__close_button" onClick={this.close}>
-                        <img src={x}/>
+                        <img src={x} alt="Close"/>
                     </button>
                     <div className="footer_popup__content">
-                        <img src={tick} className="footer_popup__icon_tick" />
+                        <img src={tick} className="footer_popup__icon_tick" alt="Tick" />
                         <div className="footer_popup__text">
                             <h1>Thanks for the application.</h1>
                             <p>The application will be considered during the day.</p>
